@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+<constant name="struts.devMode" value="true" />
+
+<package name="global" extends="struts-default">
+
+	<action name="verCandidatoOferta" class="com.thrm.actions.ActionGlobal" method="verCandidatoOferta">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">candidatoOferta.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	
+	<action name="aceptarCandidatura" class="com.thrm.actions.ActionGlobal" method="aceptarCandidatura">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">verOfertaResponsable</param>
+			<param name="id">${idOferta}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	
+	<action name="desestimarCandidatura" class="com.thrm.actions.ActionGlobal" method="desestimarCandidatura">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">verOfertaResponsable</param>
+			<param name="id">${idOferta}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	
+	<action name="mostrarRegistro" class="com.thrm.actions.ActionGlobal" method="mostrarRegistro">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">registro.jsp</result>
+		<result name="ERROR">index.jsp</result>
+	</action>
+	
+	<action name="salir" class="com.thrm.actions.ActionGlobal" method="salirSeguridad">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">index.jsp</result>
+		<result name="ERROR">index.jsp</result>
+	</action>
+
+<!-- Add actions here -->
+</package>
+
+
+<!-- Add packages here -->
+
+</struts>

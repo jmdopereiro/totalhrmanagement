@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+<constant name="struts.devMode" value="true" />
+
+<package name="candidatos" extends="default">
+	<action name="mostrarPrincipalCandidato" class="com.thrm.actions.ActionCandidato" method="principalCandidato">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">principalCandidato.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="mostrarPerfil" class="com.thrm.actions.ActionCandidato" method="perfilCandidato">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">perfilCandidato.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="mostrarFoto" class="com.thrm.actions.ActionCandidato" method="mostrarFoto">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">perfilCandidato.jsp</result>
+		<result name="ERROR">error.jsp</result>
+	</action>
+	<action name="registrarCandidato" class="com.thrm.actions.ActionCandidato" method="registrarCandidato">
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">login</param>
+			<param name="dni">${candidato.dni}</param>
+			<param name="email">${candidato.email}</param>
+			<param name="password">${candidato.password}</param>
+			<param name="mensaje">${mensaje}</param>
+		</result>
+		<result name="ERROR">registro.jsp?registroCandidatoError=true</result>
+		<result name="input" type="dispatcher">
+			<param name="location">registro.jsp?registroCandidatoError=true</param>
+		</result>
+	</action> 
+	<action name="mostrarCandidatos" class="com.thrm.actions.ActionCandidato" method="mostrarCandidatos">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">candidatos.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="subirCurriculum" class="com.thrm.actions.ActionCandidato" method="subirCurriculum">
+		<interceptor-ref name="fileUploadStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">mostrarPerfil</param>
+			<param name="mensaje">${mensaje}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="descargarCurriculum" class="com.thrm.actions.ActionCandidato" method="descargarCurriculum">
+		<interceptor-ref name="fileUploadStack"/>
+		<result name="success" type="stream">
+			<param name="inputName">ficheroStream</param>
+			<param name="contentDisposition">filename=${ficheroFileName}</param>
+			<param name="contentType">${ficheroContentType}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="eliminarCurriculum" class="com.thrm.actions.ActionCandidato" method="eliminarCurriculum">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">mostrarPerfil</param>
+			<param name="mensaje">${mensaje}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="subirFoto" class="com.thrm.actions.ActionCandidato" method="subirFoto">
+		<interceptor-ref name="fileUploadStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">mostrarPerfil</param>
+			<param name="mensaje">${mensaje}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="eliminarFoto" class="com.thrm.actions.ActionCandidato" method="eliminarFoto">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">mostrarPerfil</param>
+			<param name="mensaje">${mensaje}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="eliminarCandidato" class="com.thrm.actions.ActionCandidato" method="eliminarCandidato">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">index.jsp</result>
+		<result name="ERROR">perfilCandidato.jsp?perfilError=true</result>
+	 	<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="modificarPerfilCandidato" class="com.thrm.actions.ActionCandidato" method="modificarPerfilCandidato">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">modificarPerfilCandidato.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="modificarDatosPersonalesCandidato" class="com.thrm.actions.ActionCandidato" method="modificarDatosPersonalesCandidato">
+		<interceptor-ref name="fileUploadStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">mostrarPerfil</param>
+		</result>
+		<result name="input">modificarPerfilCandidato.jsp?modificarDatosPersonalesError=true</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="crearFormacionCandidato" class="com.thrm.actions.ActionCandidato" method="crearFormacionCandidato">
+		<interceptor-ref name="fileUploadStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">modificarPerfilCandidato</param>
+			<param name="modificarFormacionError">${modificarFormacionError}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<!--action name="eliminarFormacionCandidato" class="actions.com.thrm.actions.ActionCandidato" method="eliminarFormacionCandidato">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">modificarPerfilCandidato</param>
+			<param name="modificarFormacionError">${modificarFormacionError}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action-->
+	<action name="crearExperienciaCandidato" class="com.thrm.actions.ActionCandidato" method="crearExperienciaCandidato">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">modificarPerfilCandidato</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="eliminarExperiencia" class="com.thrm.actions.ActionCandidato" method="eliminarExperienciaCandidato">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">modificarPerfilCandidato</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="mostrarInscripciones" class="com.thrm.actions.ActionCandidato" method="mostrarInscripciones">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">inscripciones.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="verCandidato" class="com.thrm.actions.ActionCandidato" method="verCandidato">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">candidato.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="crearIdiomaCandidato" class="com.thrm.actions.ActionCandidato" method="crearIdiomaCandidato">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">modificarPerfilCandidato</param>
+			<param name="modificarFormacionError">${modificarFormacionError}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="eliminarIdiomaEnCandidato" class="com.thrm.actions.ActionCandidato" method="eliminarIdiomaEnCandidato">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">modificarPerfilCandidato</param>
+			<param name="modificarFormacionError">${modificarFormacionError}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="crearConocimientoCandidato" class="com.thrm.actions.ActionCandidato" method="crearConocimientoCandidato">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">modificarPerfilCandidato</param>
+			<param name="modificarFormacionError">${modificarFormacionError}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="eliminarConocimientoEnCandidato" class="com.thrm.actions.ActionCandidato" method="eliminarConocimientoEnCandidato">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">modificarPerfilCandidato</param>
+			<param name="modificarFormacionError">${modificarFormacionError}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="cambiarPassword" class="com.thrm.actions.ActionCandidato" method="cambiarPassword">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">mostrarPrincipalCandidato</param>
+			<param name="mensaje">${mensaje}</param>
+		</result>
+		<result name="ERROR">modificarPerfilCandidato.jsp?modificarPasswordError=true</result>
+		<!--result name="ERROR" type="redirectAction">
+			<param name="actionName">modificarPerfilCandidato</param>
+			<param name="modificarPasswordError">${modificarPasswordError}</param>
+		</result-->
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="descargarExpediente" class="com.thrm.actions.ActionCandidato" method="descargarExpediente">
+		<interceptor-ref name="fileUploadStack"/>
+		<result name="success" type="stream">
+			<param name="inputName">ficheroStream</param>
+			<param name="contentDisposition">filename=${ficheroFileName}</param>
+			<param name="contentType">${ficheroContentType}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	
+<!-- Add actions here -->
+</package>
+
+<!--<package name="ajaxfileupload" namespace="/" extends="ajaxfileupload-default">-->
+	<!---->
+<!--</package>-->
+
+
+<!-- Add packages here -->
+
+</struts>

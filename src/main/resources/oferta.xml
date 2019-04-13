@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+<constant name="struts.devMode" value="true" />
+
+<package name="ofertas" extends="default">
+
+	<action name="mostrarOfertas" class="com.thrm.actions.ActionOferta" method="mostrarOfertas">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">ofertas.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="buscarOfertas" class="com.thrm.actions.ActionOferta" method="buscarOfertas">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">ofertas.jsp</result>
+		<result name="input">ofertas.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<!--action name="ultimasOfertas" class="actions.ActionOferta" method="ultimasOfertas">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">ultimasEmpresas</result>
+		<result name="ERROR">error.jsp</result>
+	</action-->
+	<action name="verOferta" class="com.thrm.actions.ActionOferta" method="verOferta">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">oferta.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="verOfertaResponsable" class="com.thrm.actions.ActionOferta" method="verOfertaResponsable">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">ofertaResponsable.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+
+	<action name="inscribirCandidato" class="com.thrm.actions.ActionOferta" method="inscribirCandidato">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">mostrarInscripciones</param>
+			<param name="mensaje">${mensaje}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	
+	<action name="eliminarInscripcion" class="com.thrm.actions.ActionOferta" method="eliminarInscripcion">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">mostrarInscripciones</param>
+			<param name="mensaje">${mensaje}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	
+	<action name="mostrarCrearOferta" class="com.thrm.actions.ActionOferta" method="mostrarCrearOferta">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">crearOferta.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	
+	<action name="crearActualizarOferta" class="com.thrm.actions.ActionOferta" method="crearActualizarOferta">
+		<result name="SUCCESS"  type="redirectAction">
+			<param name="actionName">mostrarOfertasResponsable</param>
+		</result>
+		<result name="ERROR">crearOferta.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+		<result name="input">crearOferta.jsp</result>
+	</action>
+	
+	<action name="eliminarOferta" class="com.thrm.actions.ActionOferta" method="eliminarOferta">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS"  type="redirectAction">
+			<param name="actionName">mostrarOfertasResponsable</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	
+	<!-- Esta accion parece ser para editar (los datos adicionales de?) la oferta -->
+	<!--action name="mostrarCrearOfertaPerfil" class="com.thrm.actions.ActionOferta" method="mostrarEditarOferta"-->
+	<action name="mostrarEditarOferta" class="com.thrm.actions.ActionOferta" method="mostrarEditarOferta">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">crearOferta.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	
+	<!--action name="crearFormacionOferta" class="actions.ActionOferta" method="crearFormacionOferta">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">mostrarCrearOfertaPerfil</param>
+			<param name="idOferta">${idOferta}</param>
+			<param name="modificarFormacionError">${modificarFormacionError}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="eliminarFormacionOferta" class="actions.ActionOferta" method="eliminarFormacionOferta">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">mostrarCrearOfertaPerfil</param>
+			<param name="idOferta">${idOferta}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="crearIdiomaOferta" class="actions.ActionOferta" method="crearIdiomaOferta">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">mostrarCrearOfertaPerfil</param>
+			<param name="idOferta">${idOferta}</param>
+			<param name="modificarIdiomaError">${modificarIdiomaError}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="eliminarIdiomaOferta" class="actions.ActionOferta" method="eliminarIdiomaOferta">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">mostrarCrearOfertaPerfil</param>
+			<param name="idOferta">${idOferta}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="crearConocimientoOferta" class="actions.ActionOferta" method="crearConocimientoOferta">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">mostrarCrearOfertaPerfil</param>
+			<param name="idOferta">${idOferta}</param>
+			<param name="modificarConocimientoError">${modificarConocimientoError}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="eliminarConocimientoOferta" class="actions.ActionOferta" method="eliminarConocimientoOferta">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">mostrarCrearOfertaPerfil</param>
+			<param name="idOferta">${idOferta}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action-->
+	<action name="buscarCandidatosOferta" class="com.thrm.actions.ActionOferta" method="buscarCandidatosInscritosEnOferta">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">candidatos.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<!--action name="verCandidatoOferta" class="actions.ActionOferta" method="verCandidatoOferta">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">candidatoOferta.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action-->
+
+<!-- Add actions here -->
+</package>
+
+
+<!-- Add packages here -->
+
+</struts>

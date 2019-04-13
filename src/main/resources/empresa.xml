@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+<constant name="struts.devMode" value="true" />
+
+<package name="empresas" extends="default">
+	<action name="registrarEmpresa" class="com.thrm.actions.ActionEmpresa" method="registrarEmpresa">
+		<result name="SUCCESS">index.jsp</result>
+		<!--result name="ERROR" type="redirectAction">
+			<param name="actionName">mostrarRegistro</param>
+			<param name="registroEmpresaError">${registroEmpresaError}</param>
+		</result-->
+		<result name="ERROR">registro.jsp?registroEmpresaError=true</result>
+	</action>
+	<action name="mostrarEmpresas" class="com.thrm.actions.ActionEmpresa" method="mostrarEmpresas">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">empresas.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="buscarEmpresas" class="com.thrm.actions.ActionEmpresa" method="buscarEmpresas">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">empresas.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="verOfertasPorEmpresa" class="com.thrm.actions.ActionEmpresa" method="verOfertasPorEmpresa">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">ofertas.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="buscarResponsablesEmpresa" class="com.thrm.actions.ActionEmpresa" method="buscarResponsablesEmpresa">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">responsables.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="ultimasEmpresas" class="com.thrm.actions.ActionEmpresa" method="ultimasEmpresas">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">principalCandidato.jsp</result>
+		<result name="ERROR">error.jsp</result>
+	</action>
+	<action name="eliminarEmpresa" class="com.thrm.actions.ActionEmpresa" method="eliminarEmpresa">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">principalCandidato.jsp</result>
+		<result name="ERROR">error.jsp</result>
+	</action>
+
+<!-- Add actions here -->
+</package>
+
+
+<!-- Add packages here -->
+
+</struts>

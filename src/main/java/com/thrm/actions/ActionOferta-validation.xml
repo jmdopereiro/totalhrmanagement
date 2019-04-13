@@ -1,0 +1,90 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="oferta.tipoOferta">
+		<field-validator type="required">
+  			<message key="error.required.tipoOferta"/>
+  		</field-validator>
+	</field>
+	<field name="oferta.tipoContrato">
+		<field-validator type="required">
+  			<message key="error.required.tipoContrato"/>
+  		</field-validator>
+	</field>
+	<field name="oferta.nombre">
+		<field-validator type="requiredstring">
+  			<message key="error.required.nombre"/>
+  		</field-validator>
+	</field>
+	<!--field name="oferta.fechainicio">
+		<field-validator type="requiredstring">
+       	 	<message key="error.required.fechainicio"/>
+  		</field-validator>
+		<field-validator type="date">
+  			<message key="error.date.fechainicio"/>
+  		</field-validator>
+	</field>
+	<field name="oferta.fechafin">
+		<field-validator type="requiredstring">
+       	 	<message key="error.required.fechafin"/>
+  		</field-validator>
+		<field-validator type="date">
+  			<message key="error.date.fechafin"/>
+  		</field-validator>
+	</field-->
+	<field name="oferta.duracion">
+		<field-validator type="requiredstring">
+       	 	<message key="error.required.duracion"/>
+  		</field-validator>
+	</field>
+	<field name="oferta.jornada">
+		<field-validator type="requiredstring">
+       	 	<message key="error.required.jornada"/>
+  		</field-validator>
+	</field>
+	<field name="oferta.remuneracionminima">
+		<field-validator type="int">
+			<param name="min">00000000000</param>
+			<param name="max">99999999999</param>
+       	 	<message key="error.integer.remuneracionminima"/>
+  		</field-validator>
+	</field>
+	<field name="oferta.remuneracionmaxima">
+		<field-validator type="int">
+			<param name="min">00000000000</param>
+			<param name="max">99999999999</param>
+       	 	<message key="error.integer.remuneracionmaxima"/>
+  		</field-validator>
+	</field>
+	<field name="oferta.experienciaminima">
+		<field-validator type="int">
+			<param name="min">00</param>
+			<param name="min">99</param>
+       	 	<message key="error.integer.experienciaminima"/>
+  		</field-validator>
+	</field>
+	<field name="oferta.experienciaMaxima">
+		<field-validator type="int">
+			<param name="min">00</param>
+			<param name="min">99</param>
+       	 	<message key="error.integer.experienciaMaxima"/>
+  		</field-validator>
+	</field>
+	<field name="oferta.edadMinima">
+		<field-validator type="int">
+			<param name="min">16</param>
+			<param name="min">99</param>
+       	 	<message key="error.integer.remuneracionminima"/>
+  		</field-validator>
+	</field>
+	<field name="oferta.edadMaxima">
+		<field-validator type="int">
+			<param name="min">16</param>
+			<param name="min">99</param>
+       	 	<message key="error.integer.remuneracionmaxima"/>
+  		</field-validator>
+	</field>
+	<!--validator type="expression">
+	     <param name="expression">oferta.fechafin gt oferta.fechainicio</param>
+	    <message key="error.fechainicio.greater.fechafin"/>
+	 </validator-->
+</validators>

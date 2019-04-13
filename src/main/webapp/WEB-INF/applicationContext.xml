@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This is the Spring configuration file.  This file declares all of the Spring beans that
+			will be used by the total HR Management application.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="contextApplicationContextProvider" class="com.thrm.util.ContextProvider"></bean>
+
+	<bean id="serviciosGlobales" class="com.thrm.services.ServiciosGlobales">
+		<property name="inscripcionDAO" ref="inscripcionDAO"></property>
+		<property name="ofertaDAO" ref="ofertaDAO"></property>
+		<property name="candidatosServicios" ref="candidatosServicios"></property>
+		<property name="conocimientosServicios" ref="conocimientosServicios"></property>
+		<property name="cursosServicios" ref="cursosServicios"></property>
+	</bean>
+
+	<bean id="candidatosServicios" class="com.thrm.services.CandidatosServicios">
+		<property name="serviciosGlobales" ref="serviciosGlobales"></property>
+	</bean>
+
+	<bean id="empresaServicios" class="com.thrm.services.EmpresaServicios"></bean>
+
+	<bean id="conocimientosServicios" class="com.thrm.services.ConocimientosServicios"></bean>
+
+	<bean id="ofertaServicios" class="com.thrm.services.OfertaServicios">
+		<property name="serviciosGlobales" ref="serviciosGlobales"></property>
+	</bean>
+
+	<bean id="formacionesServicios" class="com.thrm.services.FormacionesServicios"></bean>
+	<bean id="responsablesServicios" class="com.thrm.services.ResponsablesServicios"></bean>
+	<bean id="cursosServicios" class="com.thrm.services.CursosServicios"></bean>
+
+	<bean id="inscripcionServicios" class="com.thrm.services.InscripcionServicios">
+		<property name="serviciosGlobales" ref="serviciosGlobales"/>
+	</bean>
+
+	<bean id="inscripcionDAO" class="com.thrm.dao.InscripcionDAO"></bean>
+	<bean id="ofertaDAO" class="com.thrm.dao.OfertaDAO"></bean>
+	<bean id="conocimientosDAO" class="com.thrm.dao.ConocimientosDAO"></bean>
+
+</beans>

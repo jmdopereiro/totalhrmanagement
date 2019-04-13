@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<constant name="struts.custom.i18n.resources" value="i18n" />
+	
+	<package name="default" extends="struts-default">
+		<interceptors>
+
+			<interceptor name="auth" class="com.thrm.util.AuthenticatorInterceptor"></interceptor>
+			<interceptor name="gaeFileUploadInterceptor" class="com.struts2.gae.interceptor.GaeFileUploadInterceptor"></interceptor>
+
+            <!-- Basic stack -->
+            <interceptor-stack name="basicStack">
+                <interceptor-ref name="exception"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*</param>
+                </interceptor-ref>
+                <interceptor-ref name="conversionError"/>
+				<interceptor-ref name="auth"/>
+            </interceptor-stack>
+			<interceptor-stack name="defaultStack">
+                <interceptor-ref name="exception"/>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="debugging"/>
+                <interceptor-ref name="scopedModelDriven"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="multiselect"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="params">
+                  <param name="excludeParams">dojo\..*,^struts\..*</param>
+                </interceptor-ref>
+                <interceptor-ref name="conversionError"/>
+   				<interceptor-ref name="validation">
+      				<param name="excludeMethods">*</param>
+     				<param name="includeMethods">registrarCandidato,modificarDatosPersonalesCandidato,registrarResponsable,registrarEmpresa,crearActualizarOferta</param>
+   				</interceptor-ref>
+   				<interceptor-ref name="workflow">
+     				<param name="excludeMethods">*</param>
+      				<param name="includeMethods">registrarCandidato,modificarDatosPersonalesCandidato,registrarResponsable,registrarEmpresa,crearActualizarOferta</param>
+   				</interceptor-ref>
+			</interceptor-stack>
+			<interceptor-stack name="fileUploadStack">
+				<interceptor-ref name="gaeFileUploadInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<action name="">
+			<result>/index.jsp</result></action>
+		<action name="mostrarInicio">
+			<result type="redirect">index.jsp</result>
+		</action>
+	</package>
+	
+	<include file="login.xml"/>
+	<include file="responsable.xml"/>
+	<include file="empresa.xml"/>
+	<include file="candidato.xml"/>
+	<include file="oferta.xml"/>
+	<include file="global.xml"/>
+
+</struts>    

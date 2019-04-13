@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+<constant name="struts.devMode" value="true" />
+
+<package name="login" extends="struts-default">
+<!-- this package can not extend default package as the auth interceptor does not make sense on the login action -->
+
+	<action name="login" class="com.thrm.actions.ActionLogin" method="login">
+		<interceptor-ref name="basicStack"/>
+		<result name="candidatoLogueado" type="redirectAction">
+			<param name="actionName">mostrarPrincipalCandidato</param>
+			<param name="mensaje">bienvenida</param>
+		</result>
+		<result name="responsableLogueado" type="redirectAction">
+			<param name="actionName">mostrarPrincipalResponsable</param>
+			<param name="mensaje">bienvenida</param>
+		</result>
+		<result name="ERROR">index.jsp</result>
+		<result name="input">index.jsp</result>
+	</action>
+	<action name="logout" class="com.thrm.actions.ActionLogin" method="logout">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">index.jsp</result>
+		<result name="ERROR">error.jsp</result>
+	</action>
+	
+<!-- Add actions here -->
+</package>
+
+
+<!-- Add packages here -->
+
+</struts>

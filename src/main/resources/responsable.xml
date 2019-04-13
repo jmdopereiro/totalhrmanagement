@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+<constant name="struts.devMode" value="true" />
+
+<package name="responsables" extends="default">
+	<action name="registrarResponsable" class="com.thrm.actions.ActionResponsable" method="registrarResponsable">
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">login</param>
+			<param name="dni">${responsable.dni}</param>
+			<param name="email">${responsable.email}</param>
+			<param name="password">${responsable.password}</param>
+		</result>
+		<result name="ERROR">registro.jsp?registroResponsableError=true</result>
+		<result name="input" type="dispatcher">
+			<param name="location">registro.jsp?registroResponsableError=true</param>
+		</result>
+	</action>
+	<!--action name="eliminarResponsable" class="com.thrm.actions.ActionResponsable" method="eliminarResponsable">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">index.jsp</result>
+		<result name="ERROR" type="redirectAction">
+			<param name="actionName">mostrarPerfilResponsable</param>
+		</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action-->
+	<action name="mostrarPrincipalResponsable" class="com.thrm.actions.ActionResponsable" method="principalResponsable">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">principalResponsable.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="mostrarPerfilResponsable" class="com.thrm.actions.ActionResponsable" method="perfilResponsable">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">perfilResponsable.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="mostrarCandidatosResponsable" class="com.thrm.actions.ActionResponsable" method="mostrarCandidatos">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">candidatos.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="mostrarOfertasResponsable" class="com.thrm.actions.ActionResponsable" method="mostrarOfertasResponsable">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">ofertasResponsable.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="buscarOfertasResponsable" class="com.thrm.actions.ActionOferta" method="buscarOfertasResponsable">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS">ofertasResponsable.jsp</result>
+		<result name="SINRESULTADOS">ofertasResponsable.jsp</result>
+		<result name="input">ofertasResponsable.jsp</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<!--action name="modificarPerfilResponsable" class="com.thrm.actions.ActionResponsable" method="modificarPerfilResponsable">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">mostrarPerfilResponsable</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="cambiarPasswordResponsable" class="com.thrm.actions.ActionResponsable" method="cambiarPasswordResponsable">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">mostrarPrincipalResponsable</param>
+			<param name="mensaje">${mensaje}</param>
+		</result>
+		<result name="ERROR" type="redirectAction">
+			<param name="actionName">modificarPerfilResponsable</param>
+			<param name="modificarPasswordError">${modificarPasswordError}</param>
+		</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action>
+	<action name="descargarCurriculumResponsable" class="com.thrm.actions.ActionResponsable" method="descargarCurriculumResponsable">
+		<interceptor-ref name="basicStack"/>
+		<result name="SUCCESS" type="redirectAction">
+			<param name="actionName">verCandidato</param>
+			<param name="id">${id}</param>
+		</result>
+		<result name="ERROR">error.jsp</result>
+		<result name="LOGIN" type="redirectAction">
+			<param name="actionName">salir</param>
+		</result>
+	</action-->
+	
+	
+	
+<!-- Add actions here -->
+</package>
+
+
+<!-- Add packages here -->
+
+</struts>
