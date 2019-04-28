@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -71,21 +72,21 @@
 								<sj:autocompleter label="Nombre" id="autoOfertas" name="oferta.nombre" list="%{#request.listadoBusquedaOfertas}"/>
 								<sj:radio label="%{getText('oferta.datosGenericos.tipoContrato')}" list="{'Empleo','Beca'}" name="oferta.tipoContrato"/>
 								<s:select label="%{getText('oferta.datosGenericos.estado')}" list="@com.thrm.domain.Oferta$Estados@values()" name="oferta.estado" cssClass="styled"/>
-								<s:textfield label="%{getText('oferta.datosGenericos.duracion')}" name="oferta.duracion"/>
+								<s:textfield label="Duración" name="oferta.duracion"/>
 								<s:textfield label="%{getText('oferta.datosGenericos.jornada')}" name="oferta.jornada"/>
-								<s:textfield label="%{getText('oferta.datosGenericos.poblacion')}" name="oferta.poblacion"/>
-								<s:select label="%{getText('oferta.datosGenericos.pais')}" list="#listaPaises" name="oferta.pais" cssClass="styled"/>
-								<s:textfield label="%{getText('oferta.datosGenericos.remunMin')} (EUR)" name="oferta.remuneracionminima"/>
-								<s:textfield label="%{getText('oferta.datosGenericos.remunMax')} (EUR)" name="oferta.remuneracionmaxima"/>
+								<s:textfield label="Población" name="oferta.poblacion"/>
+								<s:select label="País" list="#listaPaises" name="oferta.pais" cssClass="styled"/>
+								<s:textfield label="Remuneración mínima (EUR)" name="oferta.remuneracionminima"/>
+								<s:textfield label="Remuneración máxima (EUR)" name="oferta.remuneracionmaxima"/>
 								<s:textfield label="%{getText('oferta.datosGenericos.otrasRetribuciones')}" name="oferta.otrasretribuciones"/>
-								<s:textfield label="%{getText('oferta.requisitos.experienciaMin')} (años)" name="oferta.experienciaminima"/>
-								<s:textfield label="%{getText('oferta.requisitos.experienciaMax')} (años)" name="oferta.experienciaMaxima"/>
-								<s:textfield label="%{getText('oferta.requisitos.edadMin')} (años)" name="oferta.edadMinima"/>
-								<s:textfield label="%{getText('oferta.requisitos.edadMax')} (años)" name="oferta.edadMaxima"/>
+								<s:textfield label="Experiencia mínima (años)" name="oferta.experienciaminima"/>
+								<s:textfield label="Experiencia máxima (años)" name="oferta.experienciaMaxima"/>
+								<s:textfield label="Edad  mínima (años)" name="oferta.edadMinima"/>
+								<s:textfield label="Edad máxima (años)" name="oferta.edadMaxima"/>
 								<sj:radio label="%{getText('oferta.requisitos.carne')}" list="#listaSiNo" name="oferta.carnetconducir"/>
-								<sj:radio label="%{getText('oferta.requisitos.vehiculo')}" list="#listaSiNo" name="oferta.vehiculopropio"/>
+								<sj:radio label="Vehículo propio" list="#listaSiNo" name="oferta.vehiculopropio"/>
 								<sj:radio label="%{getText('oferta.requisitos.trabaja')}" list="#listaSiNo" name="oferta.trabajaactualmente"/>
-								<s:select label="%{getText('oferta.requisitos.movilidad')}" list="#listaMovilidades" name="oferta.movilidad" cssClass="styled"/>
+								<s:select label="Movilidad geográfica" list="#listaMovilidades" name="oferta.movilidad" cssClass="styled"/>
 								
     						<s:submit id="submitFormAutocomplete" value="Buscar" cssClass="ui-button ui-widget ui-state-default ui-corner-all ui-state-hover" />
 							</s:form> 

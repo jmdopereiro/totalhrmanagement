@@ -2,6 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%--<%@ taglib prefix="sx" uri="/struts-dojo-tags" %>--%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%--<%@ taglib prefix="img" uri="/struts-images"%>--%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
