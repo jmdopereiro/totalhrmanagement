@@ -171,8 +171,8 @@ $(document).ready(function()
 											<s:actionerror/>
 											<s:doubleselect label="%{getText('registroOferta.formacion.nombre')}" name="cursoOferta.curso" doubleName="cursoOferta.tipo"
 								 				headerValue="Seleccione" headerKey="-1" list="#request.listaCursos"  doubleList="#request.listaCursos.get(top.idcurso)" listValue="curso" doubleListValue="tipo" 
-								 				listKey="curso" doubleListKey="tipo" required="true"
-	         								/>
+								 				listKey="curso" doubleListKey="tipo"
+											/>
 											<s:hidden name="idOferta" value="%{#request.oferta.idoferta}"/>
 											<s:submit value="%{getText('global.Añadir')}" cssClass="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left ui-state-hover"/>
 										</s:form>
@@ -226,7 +226,7 @@ $(document).ready(function()
 											<s:iterator value="#request.oferta.cursoses" var="cursoO" status="contadorF">
 											<s:if test="#contadorF.count%2==0"><tr></s:if>
 											<s:else><tr class="odd"></s:else>
-											<s:url id="urlVerOferta" action="verOferta"/>
+											<s:url action="verOferta"/>
 											<th scope="row"><a href="<s:property value="#urlVerOferta"/>"><s:property value="#cursoO.curso"/></a></th>
 											<td><s:property value="#cursoO.tipo"/></td>
 											<td><a href="eliminarFormacionOferta?id=<s:property value="#cursoO.idcurso"/>&idOferta=<s:property value="#request.oferta.idoferta"/>"><s:text name="global.eliminar"/></a></td>
@@ -264,7 +264,7 @@ $(document).ready(function()
 											<s:iterator value="#request.oferta.idiomasenofertases" var="idiomaO" status="contadorI">
 											<s:if test="#contadorI.count%2==0"><tr></s:if>
 											<s:else><tr class="odd"></s:else>
-											<s:url id="urlVerOferta" action="verOferta"/>
+											<s:url action="verOferta"/>
 											<th scope="row"><a href="<s:property value="#urlVerOferta"/>"><s:property value="#idiomaO.idiomas.nombre"/></a></th>
 											<td><s:property value="#idiomaO.escrito"/></td>
 											<td><s:property value="#idiomaO.hablado"/></td>
@@ -303,7 +303,7 @@ $(document).ready(function()
 											<s:iterator value="#request.oferta.conocimientosEnOfertas" var="conocimientoO" status="contadorC">
 											<s:if test="#contadorC.count%2==0"><tr></s:if>
 											<s:else><tr class="odd"></s:else>
-											<s:url id="urlVerOferta" action="verOferta"/>
+											<s:url action="verOferta"/>
 											<th scope="row"><a href="<s:property value="#urlVerOferta"/>"><s:property value="#conocimientoO.conocimientos.nombre"/></a></th>
 											<td><s:property value="#conocimientoO.nivel"/></td>
 											<td><a href="eliminarConocimientoOferta?id=<s:property value="#conocimientoO.idconocimientosenofertas"/>&idOferta=<s:property value="#request.oferta.idoferta"/>"><s:text name="global.eliminar"/></a></td>
