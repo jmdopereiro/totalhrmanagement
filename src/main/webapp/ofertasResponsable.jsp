@@ -165,20 +165,26 @@
 								</tfoot> 
 								<tbody> 
 									<s:iterator value="#request.ofertas" var="oferta" status="contadorO">
-									<s:if test="#contadorO.count%2==0"><tr></s:if>
-									<s:else><tr class="odd"></s:else>
-									<s:url action="verOfertaResponsable">
-										<s:param name="id" value="#oferta.key.id"/> 
-									</s:url>
-									<th scope="row"><a href="<s:property value="#urlVerOferta"/>"><s:property value="#oferta.nombre"/> <s:property value="#empresa.tiposociedad"/></a></th>
-									<td><s:property value="#oferta.tipoContrato"/></td>	
-									<td><s:property value="#oferta.duracion"/></td>
-									<td><s:property value="#oferta.jornada"/></td>		
-									<td><s:date name="%{#oferta.fechaInicio}" format="dd/MM/yyyy"/></td>
-									<td><s:date name="%{#oferta.fechaFin}" format="dd/MM/yyyy"/></td>
-									<td><s:property value="#oferta.estado"/></td>		
-									<td><a href="<s:property value="#urlVerOferta"/>"><s:text name="oferta.ver"/></a></td>
-									</tr>
+										<s:if test="#contadorO.count%2==0">
+											<tr>
+										</s:if>
+										<s:else>
+											<tr class="odd">
+										</s:else>
+										<s:url var="urlVerOferta" action="verOfertaResponsable">
+											<s:param name="id" value="#oferta.key.id"/>
+										</s:url>
+										<th scope="row">
+											<a href="<s:property value="#urlVerOferta"/>"><s:property value="#oferta.nombre"/> <s:property value="#empresa.tiposociedad"/></a>
+										</th>
+										<td><s:property value="#oferta.tipoContrato"/></td>
+										<td><s:property value="#oferta.duracion"/></td>
+										<td><s:property value="#oferta.jornada"/></td>
+										<td><s:date name="%{#oferta.fechaInicio}" format="dd/MM/yyyy"/></td>
+										<td><s:date name="%{#oferta.fechaFin}" format="dd/MM/yyyy"/></td>
+										<td><s:property value="#oferta.estado"/></td>
+										<td><a href="<s:property value="#urlVerOferta"/>"><s:text name="oferta.ver"/></a></td>
+										</tr>
 									</s:iterator>
 								</tbody>
 							</table>
