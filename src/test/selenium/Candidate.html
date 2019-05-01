@@ -39,8 +39,6 @@
 <tbody>
 <tr><td>open</td><td>http://localhost:8080/<datalist><option>http://localhost:8080/</option></datalist></td><td></td>
 </tr>
-<tr><td>click</td><td>id=loginForm_dni<datalist><option>id=loginForm_dni</option><option>name=dni</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ID:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Login'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email:'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/preceding::input[2]</option><option>//input[@id='loginForm_dni']</option><option>//form[@id='loginForm']/table/tbody/tr/td[2]/input</option><option>//input</option><option>css=#loginForm_dni</option></datalist></td><td></td>
-</tr>
 <tr><td>type</td><td>id=loginForm_dni<datalist><option>id=loginForm_dni</option><option>name=dni</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ID:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Login'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email:'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/preceding::input[2]</option><option>//input[@id='loginForm_dni']</option><option>//form[@id='loginForm']/table/tbody/tr/td[2]/input</option><option>//input</option><option>css=#loginForm_dni</option></datalist></td><td>12345678Z</td>
 </tr>
 <tr><td>type</td><td>id=loginForm_email<datalist><option>id=loginForm_email</option><option>name=email</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='ID:'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/preceding::input[1]</option><option>//input[@id='loginForm_email']</option><option>//form[@id='loginForm']/table/tbody/tr[2]/td[2]/input</option><option>//tr[2]/td[2]/input</option><option>css=#loginForm_email</option></datalist></td><td>juan@hotmail.com</td>
@@ -48,6 +46,18 @@
 <tr><td>type</td><td>id=loginForm_password<datalist><option>id=loginForm_password</option><option>name=password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email:'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Sign Up'])[1]/preceding::input[2]</option><option>//input[@id='loginForm_password']</option><option>//form[@id='loginForm']/table/tbody/tr[3]/td[2]/input</option><option>//tr[3]/td[2]/input</option><option>css=#loginForm_password</option></datalist></td><td>juan</td>
 </tr>
 <tr><td>click</td><td>id=loginForm_0<datalist><option>id=loginForm_0</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Email:'])[1]/following::input[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Sign Up'])[1]/preceding::input[1]</option><option>//input[@id='loginForm_0']</option><option>//form[@id='loginForm']/table/tbody/tr[4]/td/div/input</option><option>//div/input</option><option>css=#loginForm_0</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Logout</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/mostrarPrincipalCandidato.action?mensaje=bienvenida<datalist><option>http://localhost:8080/mostrarPrincipalCandidato.action?mensaje=bienvenida</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>link=Logout<datalist><option>link=Logout</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='My profile'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='My inscriptions'])[1]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Ofertas recomendadas'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Last companies signed in'])[1]/preceding::a[1]</option><option>//a[contains(text(),'Logout')]</option><option>//div[@id='pm_sub']/ul/li/a</option><option>//a[contains(@href, '/logout.action')]</option><option>//div[2]/ul/li/a</option><option>css=#pm_sub &gt; ul &gt; li &gt; a</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Privacy policy'])[1]/following::h3[1]<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Privacy policy'])[1]/following::h3[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Sign Up'])[1]/following::h3[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='who is entitled to use the app'])[1]/preceding::h3[1]</option><option>//div[@id='conent']/i/div/div/div/h3</option><option>//i/div/div/div/h3</option><option>css=div.db1_title &gt; h3</option></datalist></td><td>About Total HR Management</td>
 </tr>
 </tbody></table>
 <table cellpadding="1" cellspacing="1" border="1">

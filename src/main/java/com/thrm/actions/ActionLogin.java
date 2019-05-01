@@ -89,7 +89,7 @@ public class ActionLogin extends ActionSupport {
 	public String logout() {
 		String resultado = "ERROR";
 		session = ActionContext.getContext().getSession();
-		session.clear();
+		session.remove("dniUsuario");
 		resultado = "SUCCESS";
 		return resultado;
 	}
