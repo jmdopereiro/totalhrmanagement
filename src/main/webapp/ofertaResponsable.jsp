@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" lang="es"/>
@@ -161,7 +162,7 @@ $(document).ready(function()
 							</s:if>
 							<s:else>
 								<sj:accordion id="acordeon">
-    							<sj:accordionItem title="%{getText('oferta.datosGenericos.titulo')}">
+    							<sj:accordionItem title="Características">
     							<table>
     								<tr><td colspan="2"><strong><s:text name="oferta.datosGenericos.empresa"/></strong> <s:property value="oferta.empresa.nombre"/> <s:property value="oferta.empresa.tiposociedad"/></td> </tr>
 									<tr><td colspan="2"><strong><s:text name="oferta.datosGenericos.tipoContrato"/></strong> <s:property value="oferta.tipoContrato"/> </td></tr>
@@ -215,7 +216,7 @@ $(document).ready(function()
 								</table>
 								</sj:accordionItem>
 								
-								<sj:accordionItem title="%{getText('oferta.formacion.titulo')}">
+								<sj:accordionItem title="Formación académica">
 									<s:if test="%{#request.oferta.cursoses.size()==0}"> 
 										<strong> <s:text name="oferta.datosFormacion.sinFormacion"/> </strong>
 									</s:if>
@@ -287,7 +288,7 @@ $(document).ready(function()
 									</s:else>
 								</sj:accordionItem>
 									
-								<sj:accordionItem title="%{getText('oferta.conocimientos.titulo')}">
+								<sj:accordionItem title="Conocimientos informáticos">
 									<s:if test="%{#request.oferta.conocimientosEnOfertas.size()==0}"> 
 										<strong> <s:text name="oferta.datosConocimientos.sinConocimientos"/> </strong>
 									</s:if>
