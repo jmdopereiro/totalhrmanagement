@@ -8,38 +8,38 @@
             http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="contextApplicationContextProvider" class="com.thrm.util.ContextProvider"></bean>
+	<bean id="contextApplicationContextProvider" class="com.thrm.util.ContextProvider"/>
 
 	<bean id="serviciosGlobales" class="com.thrm.services.ServiciosGlobales">
-		<property name="inscripcionDAO" ref="inscripcionDAO"></property>
-		<property name="ofertaDAO" ref="ofertaDAO"></property>
-		<property name="candidatosServicios" ref="candidatosServicios"></property>
-		<property name="conocimientosServicios" ref="conocimientosServicios"></property>
-		<property name="cursosServicios" ref="cursosServicios"></property>
+		<property name="inscripcionDAO" ref="inscripcionDAO"/>
+		<property name="ofertaDAO" ref="ofertaDAO"/>
+		<property name="candidatosServicios" ref="candidatosServicios"/>
+		<property name="conocimientosServicios" ref="conocimientosServicios"/>
+		<property name="cursosServicios" ref="cursosServicios"/>
 	</bean>
 
 	<bean id="candidatosServicios" class="com.thrm.services.CandidatosServicios">
-		<property name="serviciosGlobales" ref="serviciosGlobales"></property>
+		<property name="serviciosGlobales" ref="serviciosGlobales"/>
 	</bean>
 
-	<bean id="empresaServicios" class="com.thrm.services.EmpresaServicios"></bean>
+	<bean id="empresaServicios" class="com.thrm.services.EmpresaServicios"/>
 
-	<bean id="conocimientosServicios" class="com.thrm.services.ConocimientosServicios"></bean>
+	<bean id="conocimientosServicios" class="com.thrm.services.ConocimientosServicios"/>
 
 	<bean id="ofertaServicios" class="com.thrm.services.OfertaServicios">
-		<property name="serviciosGlobales" ref="serviciosGlobales"></property>
+		<property name="serviciosGlobales" ref="serviciosGlobales"/>
 	</bean>
 
-	<bean id="formacionesServicios" class="com.thrm.services.FormacionesServicios"></bean>
-	<bean id="responsablesServicios" class="com.thrm.services.ResponsablesServicios"></bean>
-	<bean id="cursosServicios" class="com.thrm.services.CursosServicios"></bean>
+	<bean id="formacionesServicios" class="com.thrm.services.FormacionesServicios"/>
+	<bean id="responsablesServicios" class="com.thrm.services.ResponsablesServicios"/>
+	<bean id="cursosServicios" class="com.thrm.services.CursosServicios"/>
 
 	<bean id="inscripcionServicios" class="com.thrm.services.InscripcionServicios">
 		<property name="serviciosGlobales" ref="serviciosGlobales"/>
 	</bean>
 
-	<bean id="inscripcionDAO" class="com.thrm.dao.InscripcionDAO"></bean>
-	<bean id="ofertaDAO" class="com.thrm.dao.OfertaDAO"></bean>
-	<bean id="conocimientosDAO" class="com.thrm.dao.ConocimientosDAO"></bean>
+	<bean id="inscripcionDAO" class="com.thrm.dao.InscripcionDAO"/>
+	<bean id="ofertaDAO" class="com.thrm.dao.OfertaDAO"/>
+	<bean id="conocimientosDAO" class="com.thrm.dao.ConocimientosDAO"/>
 
 </beans>
