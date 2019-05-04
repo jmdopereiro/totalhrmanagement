@@ -16,6 +16,7 @@
 		<property name="candidatosServicios" ref="candidatosServicios"/>
 		<property name="conocimientosServicios" ref="conocimientosServicios"/>
 		<property name="cursosServicios" ref="cursosServicios"/>
+		<property name="responsablesServicios" ref="responsablesServicios"/>
 	</bean>
 
 	<bean id="candidatosServicios" class="com.thrm.services.CandidatosServicios">
@@ -31,7 +32,11 @@
 	</bean>
 
 	<bean id="formacionesServicios" class="com.thrm.services.FormacionesServicios"/>
-	<bean id="responsablesServicios" class="com.thrm.services.ResponsablesServicios"/>
+
+	<bean id="responsablesServicios" class="com.thrm.services.ResponsablesServicios">
+		<property name="serviciosGlobales" ref="serviciosGlobales"/>
+	</bean>
+
 	<bean id="cursosServicios" class="com.thrm.services.CursosServicios"/>
 
 	<bean id="inscripcionServicios" class="com.thrm.services.InscripcionServicios">

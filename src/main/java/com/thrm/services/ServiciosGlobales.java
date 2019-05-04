@@ -15,7 +15,7 @@ import java.util.*;
 
 public class ServiciosGlobales {
 
-    private ResponsablesServicios rs = null;
+    private ResponsablesServicios responsablesServicios = null;
     private InscripcionDAO inscripcionDAO;
     private OfertaDAO ofertaDAO;
     private FormacionesServicios fs = null;
@@ -372,8 +372,8 @@ public class ServiciosGlobales {
         Responsable responsable = null;
         if (session != null) {
             String dni = session.get("dniUsuario").toString();
-            rs = ResponsablesServicios.getInstance();
-            responsable = rs.buscarResponsablePorDni(dni);
+            responsable = responsablesServicios.buscarResponsablePorDni(dni);
+            log.info("responsable cargado: " + responsable.toString());
         }
         return responsable;
     }
@@ -495,6 +495,14 @@ public class ServiciosGlobales {
 
     public void setCursosServicios(CursosServicios cursosServicios) {
         this.cursosServicios = cursosServicios;
+    }
+
+    public ResponsablesServicios getResponsablesServicios() {
+        return responsablesServicios;
+    }
+
+    public void setResponsablesServicios(ResponsablesServicios responsablesServicios) {
+        this.responsablesServicios = responsablesServicios;
     }
 
     /*

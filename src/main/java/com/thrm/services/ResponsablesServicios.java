@@ -7,24 +7,25 @@ import com.thrm.dao.EmpresasDAO;
 import com.thrm.dao.ResponsableDAO;
 import com.thrm.domain.Empresa;
 import com.thrm.domain.Responsable;
+import com.thrm.util.ContextProvider;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import javax.annotation.PostConstruct;
 
 public class ResponsablesServicios {
 
-	private static ResponsablesServicios rs = null;
+	private static final Log log = LogFactory.getLog(ResponsablesServicios.class);
+
+
 	private List<Responsable> responsables = null;
-	private ResponsableDAO responsableDAO = null;
+	private ResponsableDAO responsableDAO;
 	private EmpresasDAO empresasDAO = null;
+	private ServiciosGlobales serviciosGlobales;
 
 	private ResponsablesServicios() {
 		responsableDAO = new ResponsableDAO();
 		empresasDAO = new EmpresasDAO();
-	}
-
-	public static ResponsablesServicios getInstance() {
-		if (rs == null) {
-			rs = new ResponsablesServicios();
-		}
-		return rs;
 	}
 
 	public Responsable buscarResponsablePorDni(String dni) {
@@ -87,24 +88,26 @@ public class ResponsablesServicios {
 //		}
 //		return resultado;
 //	}
-//
-//	public String modificarPerfil(Responsables responsable) {
-//		String resultado = "ERROR";
-//		ServiciosGlobales sg = ServiciosGlobales.getInstance();
-//		Responsables responsableAlmacenado = sg.cargarResponsable();
-//		// Responsables
-//		// responsableAlmacenado=this.buscarResponsablePorDni(responsable.getDni());
-//		int idResponsable = responsableAlmacenado.getIdresponsable();
-//		String password = responsableAlmacenado.getPassword();
+
+	public String modificarPerfil(Responsable responsable) {
+		String resultado = "ERROR";
+		Responsable responsableAlmacenado = serviciosGlobales.cargarResponsable();
+		log.info("Responsable almacenado: "+ responsableAlmacenado + " key: " + responsableAlmacenado.getKey());
+
+		String password = responsableAlmacenado.getPassword();
 //		Empresa empresa = responsableAlmacenado.getEmpresas();
-//		responsable.setIdresponsable(idResponsable);
-//		responsable.setPassword(password);
+		responsable.setKey(responsableAlmacenado.getKey());
+		responsable.setPassword(password);
 //		responsable.setEmpresas(empresa);
-//		rd.merge(responsable);
-//		resultado = "SUCCESS";
-//		return resultado;
-//	}
-//
+		responsableDAO.merge(responsable);
+		resultado = "SUCCESS";
+		return resultado;
+	}
+
+	public void setServiciosGlobales(ServiciosGlobales serviciosGlobales) {
+		this.serviciosGlobales = serviciosGlobales;
+	}
+
 //	public String cambiarPassword(Responsables responsable, String nuevaPassword) {
 //		String resultado = "ERROR";
 //		responsable.setPassword(nuevaPassword);

@@ -114,7 +114,7 @@ public class CandidatosServicios {
 
         String password = candidatoAlmacenado.getPassword();
         candidato.setKey(candidatoAlmacenado.getKey());
-        ;
+
         candidato.setPassword(password);
         candidato.setFoto(candidatoAlmacenado.getFoto());
 

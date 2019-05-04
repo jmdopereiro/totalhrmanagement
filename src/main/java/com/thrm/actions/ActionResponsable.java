@@ -55,7 +55,7 @@ public class ActionResponsable extends ActionSupport {
 	
 	private static final Pattern cifPattern = Pattern.compile("[[A-H][J-N][P-S]UVW][0-9]{7}[0-9A-J]");
 	private static final String CONTROL_SOLO_NUMEROS = "ABEH"; // S�lo admiten
-	// n�meros como
+	// numeros como
 	// caracter de
 	// control
 	private static final String CONTROL_SOLO_LETRAS = "KPQS"; // S�lo admiten
@@ -174,21 +174,19 @@ public class ActionResponsable extends ActionSupport {
 //		}
 //		return resultado;
 //	}
-//
-//	public String modificarPerfilResponsable() {
-//		String resultado = "ERROR";
-//		sg = serviciosGlobales;
-//		if (sg.comprobarLogin()) {
-//			modificarPerfilError = true;
-//			rs = responsablesServicios;
-//			resultado = rs.modificarPerfil(responsable);
-//			modificarPerfilError = false;
-//		} else {
-//			resultado = "LOGIN";
-//		}
-//		return resultado;
-//	}
-//
+
+	public String modificarPerfilResponsable() {
+		String resultado = "ERROR";
+		if (serviciosGlobales.comprobarLogin()) {
+			modificarPerfilError = true;
+			resultado = responsablesServicios.modificarPerfil(responsable);
+			modificarPerfilError = false;
+		} else {
+			resultado = "LOGIN";
+		}
+		return resultado;
+	}
+
 //	public String cambiarPasswordResponsable() {
 //		String resultado = "ERROR";
 //		sg = serviciosGlobales;

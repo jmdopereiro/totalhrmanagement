@@ -225,7 +225,7 @@ public class CandidatosDAO extends GenericDAO {
 			EntityTransaction tx = getEntityManager().getTransaction();
 			tx.begin();
 
-			Candidato result = (Candidato) getEntityManager().merge(detachedInstance);
+			Candidato result = getEntityManager().merge(detachedInstance);
 
 			tx.commit();
 			log.debug("merge successful");

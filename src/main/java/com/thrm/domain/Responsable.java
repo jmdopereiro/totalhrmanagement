@@ -151,4 +151,9 @@ public class Responsable implements java.io.Serializable {
 	public Key getKey() {
 		return key;
 	}
+
+	public void setKey(Key key) {
+		this.key = key;
+	}
+
 }

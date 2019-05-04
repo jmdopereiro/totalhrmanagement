@@ -71,7 +71,7 @@
 			<param name="actionName">salir</param>
 		</result>
 	</action>
-	<!--action name="modificarPerfilResponsable" class="com.thrm.actions.ActionResponsable" method="modificarPerfilResponsable">
+	<action name="modificarPerfilResponsable" class="com.thrm.actions.ActionResponsable" method="modificarPerfilResponsable">
 		<interceptor-ref name="basicStack"/>
 		<result name="SUCCESS" type="redirectAction">
 			<param name="actionName">mostrarPerfilResponsable</param>
@@ -81,7 +81,7 @@
 			<param name="actionName">salir</param>
 		</result>
 	</action>
-	<action name="cambiarPasswordResponsable" class="com.thrm.actions.ActionResponsable" method="cambiarPasswordResponsable">
+	<!--action name="cambiarPasswordResponsable" class="com.thrm.actions.ActionResponsable" method="cambiarPasswordResponsable">
 		<interceptor-ref name="basicStack"/>
 		<result name="SUCCESS" type="redirectAction">
 			<param name="actionName">mostrarPrincipalResponsable</param>

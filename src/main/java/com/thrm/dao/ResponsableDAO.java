@@ -37,10 +37,8 @@ public class ResponsableDAO extends GenericDAO{
 	public static final String EMAIL = "email";
 	public static final String PASSWORD = "password";
 
-	private EntityManager entityManager;
-
 	public void save(Responsable responsable) {
-		log.debug("saving Responsables instance");
+		log.debug("saving Responsable instance");
 		try {
 			EntityTransaction tx = getEntityManager().getTransaction();
 			tx.begin();
@@ -94,7 +92,7 @@ public class ResponsableDAO extends GenericDAO{
 //	}
 //
 	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding Responsables instance with property: " + propertyName + ", value: " + value);
+		log.info("finding Responsables instance with property: " + propertyName + ", value: " + value);
 		try {
 			String queryString = "select r from Responsable r where " + propertyName + "= ?1";
 			Query query = getEntityManager().createQuery(queryString);
@@ -150,24 +148,23 @@ public class ResponsableDAO extends GenericDAO{
 		}
 	}
 
-//	public Responsables merge(Responsables detachedInstance) {
-//		log.debug("merging Responsables instance");
-//		try {
-//			Session session = HibernateSessionFactory.getSession();
-//			Transaction tx = session.beginTransaction();
-//			tx.begin();
-//
-//			Responsables result = (Responsables) session.merge(detachedInstance);
-//
-//			tx.commit();
-//			log.debug("merge successful");
-//			return result;
-//		} catch (RuntimeException re) {
-//			log.error("merge failed", re);
-//			throw re;
-//		}
-//	}
-//
+	public Responsable merge(Responsable detachedInstance) {
+		log.debug("merging Responsable instance");
+		try {
+			EntityTransaction transaction = getEntityManager().getTransaction();
+			transaction.begin();
+
+			Responsable result = getEntityManager().merge(detachedInstance);
+
+			transaction.commit();
+			log.debug("merge successful");
+			return result;
+		} catch (RuntimeException re) {
+			log.error("merge failed", re);
+			throw re;
+		}
+	}
+
 //	public void attachDirty(Responsables instance) {
 //		log.debug("attaching dirty Responsables instance");
 //		try {
