@@ -95,10 +95,10 @@ public class ResponsablesServicios {
 		log.info("Responsable almacenado: "+ responsableAlmacenado + " key: " + responsableAlmacenado.getKey());
 
 		String password = responsableAlmacenado.getPassword();
-//		Empresa empresa = responsableAlmacenado.getEmpresas();
+		Empresa empresa = responsableAlmacenado.getEmpresa();
 		responsable.setKey(responsableAlmacenado.getKey());
 		responsable.setPassword(password);
-//		responsable.setEmpresas(empresa);
+		responsable.setEmpresa(empresa);
 		responsableDAO.merge(responsable);
 		resultado = "SUCCESS";
 		return resultado;

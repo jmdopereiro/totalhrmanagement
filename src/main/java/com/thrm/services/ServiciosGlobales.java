@@ -374,6 +374,7 @@ public class ServiciosGlobales {
             String dni = session.get("dniUsuario").toString();
             responsable = responsablesServicios.buscarResponsablePorDni(dni);
             log.info("responsable cargado: " + responsable.toString());
+            log.info("empresa asociada a responsable: " + responsable.getEmpresa());
         }
         return responsable;
     }
