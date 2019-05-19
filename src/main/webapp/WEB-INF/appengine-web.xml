@@ -3,10 +3,6 @@
   <application>totalhrmanagement</application>
   <version>1</version>
 
-  <env-variables>
-    <env-var name="DEFAULT_ENCODING" value="UTF-8"/>
-  </env-variables>
-
   <!-- Configure java.util.logging -->
   <system-properties>
     <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
