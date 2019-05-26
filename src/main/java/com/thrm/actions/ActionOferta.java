@@ -9,6 +9,7 @@ import com.thrm.services.InscripcionServicios;
 import com.thrm.services.OfertaServicios;
 import com.thrm.services.ServiciosGlobales;
 
+import java.net.URLDecoder;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -263,6 +264,10 @@ public class ActionOferta extends ActionSupport {
 	}
 
 	public String mostrarCrearOferta() {
+
+	    String label = getText("registroOferta.datosGenericos.descripcion");
+        URLDecoder.decode(label);
+
 		String resultado = "ERROR";
 		listaCursos = getServiciosGlobales().cargarCursos();
 //			listaIdiomas = serviciosGlobales.cargarIdiomas();

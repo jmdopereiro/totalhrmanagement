@@ -190,8 +190,8 @@ $(document).ready(function()
 									<td><strong><s:text name="candidato.datosFormacion.nombre"/></strong></td>
 									<td><strong><s:text name="candidato.datosFormacion.tipo"/></strong></td>
 									<td><strong><s:text name="candidato.datosFormacion.centro"/></strong></td>
-									<td><strong><s:text name="candidato.datosFormacion.añoInicio"/></strong></td>
-									<td><strong><s:text name="candidato.datosFormacion.añoFin"/></strong></td>
+									<td><strong><s:text name="candidato.datosFormacion.anoInicio"/></strong></td>
+									<td><strong><s:text name="candidato.datosFormacion.anoFin"/></strong></td>
 									<td><strong><s:text name="candidato.datosFormacion.notaMedia"/></strong></td>
 									</tr>
 									<s:iterator value="#request.candidato.formaciones" var="form">

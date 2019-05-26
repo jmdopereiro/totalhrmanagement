@@ -295,8 +295,8 @@ $(document).ready(function()
 									<th scope="col"><s:text name="candidato.datosFormacion.nombre"/></th>
 									<th scope="col"><s:text name="candidato.datosFormacion.tipo"/></th>
 									<th scope="col"><s:text name="candidato.datosFormacion.centro"/></th>
-									<th scope="col"><s:text name="candidato.datosFormacion.añoInicio"/></th>
-									<th scope="col"><s:text name="candidato.datosFormacion.añoFin"/></th>
+									<th scope="col"><s:text name="candidato.datosFormacion.anoInicio"/></th>
+									<th scope="col"><s:text name="candidato.datosFormacion.anoFin"/></th>
 									<th scope="col"><s:text name="candidato.datosFormacion.notaMedia"/></th>
 									<th scope="col"><s:text name="candidato.datosFormacion.expediente"/></th>
 									</tr>

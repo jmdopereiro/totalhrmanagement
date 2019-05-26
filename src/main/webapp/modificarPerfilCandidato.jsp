@@ -236,9 +236,9 @@ $(document).ready(function()
 					
 					<sj:div id="capaFormacion" indicator="indicadorEspera" cssStyle="display:none">
 						
-						<sj:a id="botonFormularioFormacion" cssClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover" button="false">Formación</sj:a>
-						<sj:a id="botonFormularioIdioma" cssClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover" button="false">Idiomas</sj:a>
-						<sj:a id="botonFormularioConocimiento" cssClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover" button="false">Conocimientos informáticos</sj:a>
+						<sj:a id="botonFormularioFormacion" cssClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover" button="false"><s:text name="candidato.datosFormacion.titulo"/></sj:a>
+						<sj:a id="botonFormularioIdioma" cssClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover" button="false"><s:text name="registroOferta.idiomas.titulo"/></sj:a>
+						<sj:a id="botonFormularioConocimiento" cssClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover" button="false"><s:text name="registroOferta.conocimientos.titulo"/></sj:a>
 						
 						<sj:div id="formularioFormacion" indicator="indicadorEspera" cssStyle="display:none">
 							<s:form action="crearFormacionCandidato" namespace="/"  method="post" theme="xhtml" cssStyle="font:9pT verdana; color:#3F598B;" validate="true" enctype="multipart/form-data">
@@ -248,7 +248,7 @@ $(document).ready(function()
 								 listKey="curso" doubleListKey="tipo" required="true"
 	         					/-->
 								<s:textfield label="%{getText('modificarPerfilCandidato.formacion.centro')}" name="formacion.centro"/>
-								<s:textfield label="%{getText('modificarPerfilCandidato.formacion.añoInicio')}" name="formacion.annoinicio"/>
+								<s:textfield label="%{getText('modificarPerfilCandidato.formacion.anoInicio')}" name="formacion.annoinicio"/>
 								<s:textfield label="%{getText('modificarPerfilCandidato.formacion.añoFin')}" name="formacion.annofin"/>
 								<s:textfield label="%{getText('modificarPerfilCandidato.formacion.notaMedia')}" name="formacion.notamedia"/>
 								<s:file label="%{getText('modificarPerfilCandidato.formacion.expediente')}" name="fichero"/>
@@ -288,7 +288,7 @@ $(document).ready(function()
 						<th scope="col"><s:text name="modificarPerfilCandidato.formacion.nombre"/></th>
 						<th scope="col"><s:text name="modificarPerfilCandidato.formacion.tipo"/></th>
 						<th scope="col"><s:text name="modificarPerfilCandidato.formacion.centro"/></th>
-						<th scope="col"><s:text name="modificarPerfilCandidato.formacion.añoInicio"/></th>
+						<th scope="col"><s:text name="modificarPerfilCandidato.formacion.anoInicio"/></th>
 						<th scope="col"><s:text name="modificarPerfilCandidato.formacion.añoFin"/></th>
 						<th scope="col"><s:text name="modificarPerfilCandidato.formacion.notaMedia"/></th>
 						<th scope="col"><s:text name="modificarPerfilCandidato.formacion.expediente"/></th>

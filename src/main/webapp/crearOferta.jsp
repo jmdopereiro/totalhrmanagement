@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%--<%@ taglib prefix="sx" uri="/struts-dojo-tags" %>--%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
@@ -8,7 +8,6 @@
 <link rel="stylesheet" type="text/css" href="css/estiloRadioButton.css"/>
 <link rel="stylesheet" type="text/css" href="css/estiloTabla.css"/>
 <script src="javascript/scriptRadioButton.js" type="text/javascript"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><s:text name="global.title"/></title>
 <%--<sx:head/>--%>
 <s:head theme="xhtml"/>
@@ -20,10 +19,10 @@ $(document).ready(function()
 {
 
 	$( ".selector" ).datepicker({ altFormat: 'dd/mm/yy' });
-	
+
 	//var mostrarDatosGenericos =<%=request.getAttribute("registroCandidatoError")%>;
 	//var mostrarResponsable =<%=request.getAttribute("registroResponsableError")%>;
-	
+
 	/*if(mostrarCandidato==true)
 	{
 		$('#capaSeleccion').hide();
@@ -36,10 +35,10 @@ $(document).ready(function()
 		$('#responsable').show('slow');
 		$('#indicacionesResponsable').show('slow');
 	}
-	
-	$('#roles').bind('click',function() 
+
+	$('#roles').bind('click',function()
 	{
-		var variable = $("input[@name=roles]:checked").val(); 
+		var variable = $("input[@name=roles]:checked").val();
 		$('#capaSeleccion').hide();
 		$('#indicaciones').show('slow');
 		if (variable=='Candidato')
@@ -48,7 +47,7 @@ $(document).ready(function()
 	  		$('#indicacionesCandidato').show('slow');
 	  		$('#responsable').hide();
 	  		$('#indicacionesResponsable').hide();
-			
+
 	  	}
 	 	if (variable=='Responsable de RR.HH.')
 	 	{
@@ -56,7 +55,7 @@ $(document).ready(function()
 	  		$('#indicacionesResponsable').show('slow');
 	  		$('#candidato').hide();
 	  		$('#indicacionesCandidato').hide();
-	  		
+
 	  	}
 	});*/
 });
@@ -83,7 +82,7 @@ $(document).ready(function()
 				<li><a href="<s:property value="#urlPerfil"/>"><b><s:text name="responsable.perfil"/></b></a></li>
 				</ul>
 			</div>
-			
+
 			<div id="pm_sub">
 				<ul>
 					<li><a href="<s:property value="#urlSalir"/>"><s:text name="global.salir"/></a></li>
@@ -97,7 +96,6 @@ $(document).ready(function()
 	<!-- content block START -->
 	<div id="conent">
 		<div class="right_col">
-				<!-- AQUÍ IRIA LO DE LA DERECHA-->
 				<sj:div id="indicaciones" indicator="indicadorEspera" cssStyle="display:non;font:9pt verdana;">
 					<div class="db3" style="" >
 						<div class="bd3_top">
@@ -108,16 +106,16 @@ $(document).ready(function()
 							</br></br>
 							<sj:div id="indicaciones" indicator="indicadorEspera">
 								<u><i>Ejemplo:</i></u><br/>
-								
+
 								<br/><strong>Tipo de oferta:</strong> Pública
 								<br/><strong>Tipo de contrato:</strong> Empleo
 								<br/><strong>Nombre:</strong> Representante de ventas.
-								<br/><strong>Descripción:</strong> Se requiere representante de ventas con experiencia. 
+								<br/><strong>Descripción:</strong> Se requiere representante de ventas con experiencia.
 								<br/><strong>Fecha de inicio:</strong> 01/11/10
 								<br/><strong>Fecha de finalización:</strong> 21/12/10
 								<br/><strong>Duración:</strong> Indefinida
 								<br/><strong>Jornada laboral:</strong> Completa
-								<br/><strong>Población:</strong> Madrid 
+								<br/><strong>Población:</strong> Madrid
 								<br/><strong>País:</strong> España
 								<br/><strong>Remuneración mínima:</strong> 6000
 								<br/><strong>Remuneración máxima:</strong> 10000
@@ -130,7 +128,7 @@ $(document).ready(function()
 								<br/><strong>Vehículo propio:</strong> Sí
 								<br/><strong>Trabaja actualmente:</strong> No
 								<br/><strong>Movilidad geográfica:</strong> Internacional
-								<br/><strong>Otros datos de interés:</strong> Se requiere una persona trabajadora y comprometida con su trabajo.   
+								<br/><strong>Otros datos de interés:</strong> Se requiere una persona trabajadora y comprometida con su trabajo.
 								<br/><br/><i>A continuación podrá continuar añadiendo el perfil de la oferta de trabajo.</i>
 							</sj:div>
 						</div>
@@ -147,21 +145,22 @@ $(document).ready(function()
 					<div class="db1" style="width:550px; float:left; margin-right:25px;">
 						<div class="db1_title">
 							<h3><s:text name="global.crearOferta"/></h3>
-						</div>					
+						</div>
 						<div class="db1_content">
 							<div class="db1_container">
 							<div class="db3" style="width: 502px; margin:10px; font:9pt verdana; color:#3F598B;">
-								<sj:div id="capaFormulario"> 
+								<sj:div id="capaFormulario">
 									<s:form id="formOferta" action="crearActualizarOferta" namespace="/"  method="post" theme="xhtml" cssStyle="font:9pT verdana; color:#3F598B;" validate="true">
 										<s:actionerror/>
 										<s:set var="listaPaises" value="{'España','Alemania','Bélgica','Italia','Portugal','Inglaterra','Escocia','Francia','Luxemburgo'}"/>
 										<s:set var="listaSiNo" value="#{'true':'Si','false':'No'}"/>
 										<s:set var="listaMovilidades" value="{'Local','Provincial','Interprovincial','Internacional','Transoceanica'}"/>
-										
 										<sj:radio label="%{getText('registroOferta.datosGenericos.tipoOferta')}" list="{'Pública','Privada'}" name="oferta.tipoOferta" required="true"/>
 										<sj:radio label="%{getText('registroOferta.datosGenericos.tipoContrato')}" list="{'Empleo','Beca'}" name="oferta.tipoContrato" required="true"/>
 										<s:textfield label="%{getText('registroOferta.datosGenericos.nombre')}" name="oferta.nombre" required="true"/>
-										<s:select label="%{getText('oferta.estado')}" list="@com.thrm.domain.Oferta$Estados@values()" name="oferta.estado"></s:select>
+										<s:select label="%{getText('oferta.estado')}" list="@com.thrm.domain.Oferta$Estados@values()" name="oferta.estado"/>
+<%--										<s:text name="registroOferta.datosGenericos.descripcion"/>--%>
+<%--										<s:property value="getText('registroOferta.datosGenericos.descripcion')" escapeHtml="false"/>--%>
 										<s:textarea label="%{getText('registroOferta.datosGenericos.descripcion')}" name="oferta.descripcion" cols="25" />
 										<sj:datepicker name="oferta.fechaInicio" label="%{getText('registroOferta.datosGenericos.fechaInicio')}" displayFormat="dd/mm/yy" numberOfMonths="[2,3]" showButtonPanel="true" minDate="+0d" required="true"/>
 										<sj:datepicker name="oferta.fechaFin" label="%{getText('registroOferta.datosGenericos.fechaFin')}" displayFormat="dd/mm/yy" numberOfMonths="[2,3]" showButtonPanel="true" minDate="+1d" required="true"/>
@@ -183,15 +182,15 @@ $(document).ready(function()
 										<s:textarea label="%{getText('registroOferta.datosGenericos.otrosDatos')}" name="oferta.otrosdatos" cols="25"/>
 										<!--s:hidden name="oferta.empresas.idempresa" value="%{#request.responsable.empresas.idempresa}"/-->
 										<!--s:hidden name="oferta.empresas.idempresa" value="%{#session.empresa.idempresa}"/-->
-										
+
 										<!-- This hidden is for the update -->
 										<s:hidden name="id" value="%{#request.oferta.key.id}"></s:hidden>
-										
-										<s:if test="oferta == null">										
+
+										<s:if test="oferta == null">
 											<s:submit value="Crear oferta" cssClass="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left ui-state-hover"/>
 										</s:if>
 										<s:else>
-											<s:submit value="Actualizar oferta" cssClass="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left ui-state-hover"/>										
+											<s:submit value="Actualizar oferta" cssClass="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left ui-state-hover"/>
 										</s:else>
 									</s:form>
 								</sj:div>
@@ -201,19 +200,19 @@ $(document).ready(function()
 						</div>
 					</div>
 					<br/><br/><br/><br/>
-					
-						<p class="clear_left"></p>					
-			
+
+						<p class="clear_left"></p>
+
 			</div>
 		</div>
 	<!-- content block End -->
-	<!-- Footer block START -->	
+	<!-- Footer block START -->
 	<div id="footer">
 		<div id="copyright">  <s:text name="global.copyright"/>  </div>
 		<div id="designby">Design by <a href="http://www.flashdaweb.com/">Flashdaweb</a></div>
 		<div id="bottom_menu"> </div>
 	</div>
-	
+
 </div>
 
 </div>
