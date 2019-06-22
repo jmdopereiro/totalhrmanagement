@@ -84,12 +84,15 @@ public class ActionOferta extends ActionSupport {
 			}
 			else if(oferta.getTipoContrato() != null) {
 				ofertas = ofertaServicios.buscarOfertasPorTipoContrato(oferta.getTipoContrato());
-			}
-			else if(oferta.getEstado() != null) {
+			} else if (oferta.getDuracion() != null) {
+				ofertas = ofertaServicios.buscarOfertas(oferta);
+			} else if (oferta.getEstado() != null) {
 				ofertas = ofertaServicios.buscarOfertasPorEstado(oferta.getEstado());
 			}
 
-			logger.info(ofertas.size() + oferta.getNombre());
+			if (ofertas != null) {
+				logger.info(ofertas.size() + oferta.getNombre());
+			}
 			resultado = "SUCCESS";
 //			this.recargarPagina();
 		}

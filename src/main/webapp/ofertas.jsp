@@ -72,8 +72,8 @@
 								<s:set var="listaSiNo" value="#{'true':'Si','false':'No'}"/>
 								<s:set var="listaMovilidades" value="{'Local','Provincial','Interprovincial','Internacional','Transoceanica'}"/>
 								
-								<sj:autocompleter label="Nombre" id="autoOfertas" name="oferta.nombre" list="%{#request.listadoBusquedaOfertas}"/>
-								<sj:autocompleter label="Empresa" id="autoEmpresa" name="oferta.empresa.nombre" list="%{#request.listadoBusquedaEmpresas}"/>
+								<s:textfield label="Nombre" name="oferta.nombre" />
+								<s:textfield label="Empresa" name="oferta.empresa.nombre" />
 								<sj:radio label="%{getText('oferta.datosGenericos.tipoContrato')}" list="{'Empleo','Beca'}" name="oferta.tipoContrato"/>
 								<s:select label="%{getText('oferta.estado')}" list="@com.thrm.domain.Oferta$Estados@values()" name="oferta.estado" cssClass="styled"/>
 								<s:textfield label="Duración" name="oferta.duracion" />

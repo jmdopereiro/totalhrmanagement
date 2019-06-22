@@ -387,7 +387,9 @@ $(document).ready(function()
 						<s:if test="%{#request.candidato.conocimientosEnCandidato.size()!=0}"> 
 							<s:iterator value="#request.candidato.conocimientosEnCandidato" var="conocimientoEnCandidato" status="contadorC">
 									<s:url var="urlEliminarConocimientoEnCandidato" action="eliminarConocimientoEnCandidato">
-										<s:param name="conocimientoEnCandidatoId" value="#conocimientoEnCandidato.key.id"/>
+										<s:param name="conocimientoEnCandidatoId">
+												<s:property value="%{#conocimientoEnCandidato.key.id}"/>
+										</s:param>
 									</s:url>
 							<s:if test="#contadorC.count%2==0"><tr></s:if>
 							<s:else><tr class="odd"></s:else>

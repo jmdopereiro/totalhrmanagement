@@ -33,16 +33,20 @@ public class OfertaServicios extends AbstractServicios {
 	public List<Oferta> buscarOfertasPorNombre(String nombre) {
 		return ofertaDAO.findByNombre(nombre);
 	}
-	
-	public List<Oferta> buscarOfertasPorTipoContrato(String tipoContrato){
+
+	public List<Oferta> buscarOfertasPorTipoContrato(String tipoContrato) {
 		return ofertaDAO.findByTipoContrato(tipoContrato);
 	}
 
-	public List<Oferta> buscarOfertasPorEstado(Oferta.Estados estado){
+	public List<Oferta> buscarOfertasPorEstado(Oferta.Estados estado) {
 		return ofertaDAO.findByEstado(estado);
 	}
 
-//	public List<Oferta> ultimasOfertas() {
+	public List<Oferta> buscarOfertas(Oferta oferta) {
+		return ofertaDAO.findByExample(oferta);
+	}
+
+	//	public List<Oferta> ultimasOfertas() {
 //		ofertas = ofertaDAO.findLastFive();
 //		return ofertas;
 //	}
@@ -64,11 +68,11 @@ public class OfertaServicios extends AbstractServicios {
 //		return o;
 //	}
 
-	public Oferta buscarOfertaByKey(Key key){
+	public Oferta buscarOfertaByKey(Key key) {
 		Oferta o = ofertaDAO.findByKey(key);
 		return o;
 	}
-	
+
 //	public List<String> listarBusquedaOfertas() {
 //		ArrayList<String> listadoOfertas;
 //		Iterator<Oferta> i = ofertas.iterator();
@@ -85,27 +89,26 @@ public class OfertaServicios extends AbstractServicios {
 
 
 	/**
-	 * Your user instance is already loaded in the persistence context, 
-	 * just modifiy it and don't invoke any EntityManager method, 
+	 * Your user instance is already loaded in the persistence context,
+	 * just modifiy it and don't invoke any EntityManager method,
 	 * the JPA provider will automatically update the database at flush or commit time.
-	 * 
 	 */
 	public String crearOferta(Empresa empresa, Oferta oferta) {
 		String resultado = "ERROR";
 		empresa.addOferta(oferta);
 		oferta.setEmpresa(empresa);
-		
+
 		empresasDAO.merge(empresa);
 		resultado = "SUCCESS";
 		return resultado;
 	}
-	
-	public String modificarOferta (Oferta oferta){
-		
+
+	public String modificarOferta(Oferta oferta) {
+
 		ofertaDAO.merge(oferta);
 
 		return "SUCCESS";
-		
+
 	}
 
 	public String eliminarOferta(Key key) {

@@ -126,16 +126,16 @@ public class ActionCandidato extends ActionSupport {
 
 	public String registrarCandidato() {
 		String resultado = "ERROR";
-//		if (getCandidatosServicios().verificarExistenciaDniEmail(candidato.getDni(), candidato.getEmail())) {
-//			addActionError("El dni o el email introducido ya existe en nuestra BD");
-//			addFieldError("candidato.dni", "");
-//			addFieldError("email", "");
-//			addFieldError("candidato.email", "");
-//		} else {
+		if (getCandidatosServicios().verificarExistenciaDniEmail(candidato.getDni(), candidato.getEmail())) {
+			addActionError("El dni o el email introducido ya existe en nuestra BD");
+			addFieldError("candidato.dni", "");
+			addFieldError("email", "");
+			addFieldError("candidato.email", "");
+		} else {
 			resultado = getCandidatosServicios().registrar(candidato);
 			ActionContext.getContext().getSession().put("dniUsuario", candidato.getDni());
 			mensaje = "bienvenida";
-//		}
+		}
 		return resultado;
 	}
 
@@ -367,8 +367,10 @@ public class ActionCandidato extends ActionSupport {
 
 	public String eliminarConocimientoEnCandidato() {
 		modificarFormacionError = true;
-		Key key = getConocimientoEnCandidatoKeyFromCandidatoAndId();
-		String resultado = getServiciosGlobales().eliminarConocimientoEnCandidatoByKey(key);
+
+		Candidato candidato = getCandidatoFromIdOrSession();
+		Key key = getConocimientoEnCandidatoKeyFromCandidatoAndId(candidato);
+		String resultado = candidatosServicios.eliminarConocimientoEnCandidatoByKey(candidato, key);
 		return resultado;
 	}
 
@@ -409,8 +411,7 @@ public class ActionCandidato extends ActionSupport {
 //		}
 //	}
 
-	private Key getConocimientoEnCandidatoKeyFromCandidatoAndId() {
-		Candidato candidato = getCandidatoFromIdOrSession();
+	private Key getConocimientoEnCandidatoKeyFromCandidatoAndId(Candidato candidato) {
 		Key key = candidato.getKey().getChild("ConocimientoEnCandidato", conocimientoEnCandidatoId);
 		return key;
 	}

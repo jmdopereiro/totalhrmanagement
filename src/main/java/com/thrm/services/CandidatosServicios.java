@@ -5,9 +5,11 @@ import java.util.List;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.thrm.dao.CandidatosDAO;
+import com.thrm.dao.ConocimientoEnCandidatoDAO;
 import com.thrm.dao.InscripcionDAO;
 import com.thrm.dao.datastore.DSCandidateDAO;
 import com.thrm.domain.Candidato;
+import com.thrm.domain.ConocimientoEnCandidato;
 import com.thrm.domain.Inscripcion;
 
 public class CandidatosServicios {
@@ -17,10 +19,12 @@ public class CandidatosServicios {
     private CandidatosDAO candidatoDAO;//    private DSCandidateDAO candidateDAO;
     private InscripcionDAO inscripcionDAO = null;
     private ServiciosGlobales serviciosGlobales;
+    private ConocimientoEnCandidatoDAO conocimientoEnCandidatoDAO = null;
 
     private CandidatosServicios() {
         candidatoDAO = new CandidatosDAO();//        candidateDAO = new DSCandidateDAO();
         inscripcionDAO = new InscripcionDAO();
+        conocimientoEnCandidatoDAO = new ConocimientoEnCandidatoDAO();
     }
 
     public String registrar(Candidato candidato) {
@@ -121,6 +125,20 @@ public class CandidatosServicios {
         candidatoDAO.merge(candidato);
         resultado = "SUCCESS";
         return resultado;
+    }
+
+    public String eliminarConocimientoEnCandidatoByKey(Candidato candidato, Key key) {
+        String result = "ERROR";
+
+        conocimientoEnCandidatoDAO = new ConocimientoEnCandidatoDAO();
+        ConocimientoEnCandidato conocimientoEnCandidato = conocimientoEnCandidatoDAO.findByKey(key);
+        candidato.getConocimientosEnCandidato().remove(conocimientoEnCandidato);
+
+        if (conocimientoEnCandidato != null) {
+            candidatoDAO.merge(candidato);
+            result = "SUCCESS";
+        }
+        return result;
     }
 
     private ServiciosGlobales getServiciosGlobales() {

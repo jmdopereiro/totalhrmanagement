@@ -142,14 +142,25 @@ public class OfertaDAO extends GenericDAO {
 		}
 	}
 	
-//	public List<Oferta> findByProperties() {
-//		log.debug("finding Oferta instances with properties: ");
-//		try {
-//			
-//			
-//			
-//		}
-//	}
+	public List<Oferta> findByExample(Oferta oferta) {
+		log.debug("finding Oferta instances with : "+ oferta);
+		try {
+			StringBuilder builder = new StringBuilder("select e from Oferta e where ");
+			if (oferta.getDuracion() != null) {
+				builder.append("duracion = ?1");
+			}
+
+			String queryString = builder.toString();
+			Query query = getEntityManager().createQuery(queryString);
+			if (oferta.getDuracion() != null) {
+				query.setParameter(1, oferta.getDuracion());
+			}
+			return query.getResultList();
+		} catch (RuntimeException e) {
+			log.error("find by example failed", e);
+			throw e;
+		}
+	}
 	
 //	public List findByTipooferta(Object tipoOferta) {
 //		return findByProperty(TIPOOFERTA, tipoOferta);

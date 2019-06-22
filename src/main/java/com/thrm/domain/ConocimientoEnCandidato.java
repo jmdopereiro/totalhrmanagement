@@ -61,4 +61,11 @@ public class ConocimientoEnCandidato implements java.io.Serializable {
 		this.nivel = nivel;
 	}
 
+	public Candidato getCandidato() {
+		return candidato;
+	}
+
+	public void setCandidato(Candidato candidato) {
+		this.candidato = candidato;
+	}
 }

@@ -25,7 +25,7 @@ public class ServiciosGlobales {
     private ConocimientosServicios cos = null;
     private IdiomasencandidatosDAO icd = new IdiomasencandidatosDAO();
     ;
-    private ConocimientoEnCandidatoDAO ccd = null;
+    private ConocimientoEnCandidatoDAO conocimientoEnCandidatoDAO = null;
     private IdiomasenofertasDAO iod = null;
     private ConocimientoEnOfertaDAO cod = null;
     private CandidatosDAO cd = new CandidatosDAO();
@@ -233,25 +233,12 @@ public class ServiciosGlobales {
 
     public String crearConocimientoCandidato(String nombreConocimiento,
                                              ConocimientoEnCandidato conocimientoEnCandidato, Candidato candidato) {
-//		Conocimientos c = cos.buscarConocimientoPorNombre(nombreConocimiento);
-        Conocimiento conocimiento = new Conocimiento(nombreConocimiento);
-        conocimientoEnCandidato.setConocimiento(conocimiento);
+//		Conocimiento c = cos.buscarConocimientoPorNombre(nombreConocimiento);
         candidato.getConocimientosEnCandidato().add(conocimientoEnCandidato);
-        ccd = new ConocimientoEnCandidatoDAO();
-        ccd.save(conocimientoEnCandidato);
+        CandidatosDAO candidatosDAO = new CandidatosDAO();
+        candidatosDAO.save(candidato);
+
         return "SUCCESS";
-    }
-
-    public String eliminarConocimientoEnCandidatoByKey(Key key) {
-        String resultado = "ERROR";
-
-        ccd = new ConocimientoEnCandidatoDAO();
-        ConocimientoEnCandidato cc = ccd.findByKey(key);
-        if (cc != null) {
-            ccd.delete(cc);
-            resultado = "SUCCESS";
-        }
-        return resultado;
     }
 
 //	public String crearIdiomaOferta(String nombreIdioma, Idiomasenofertas idiomaenoferta, Oferta oferta) {
