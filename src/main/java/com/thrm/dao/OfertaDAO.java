@@ -9,6 +9,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import com.google.appengine.api.datastore.*;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -22,7 +23,7 @@ import com.thrm.domain.Oferta;
  * methods provides additional information for how to configure it for the
  * desired type of transaction control.
  * 
- * @see Oferta.Ofertas
+ * @see Oferta
  * @author MyEclipse Persistence Tools
  */
 
@@ -146,14 +147,27 @@ public class OfertaDAO extends GenericDAO {
 		log.debug("finding Oferta instances with : "+ oferta);
 		try {
 			StringBuilder builder = new StringBuilder("select e from Oferta e where ");
-			if (oferta.getDuracion() != null) {
-				builder.append("duracion = ?1");
+			if (StringUtils.isNotEmpty(oferta.getDuracion())) {
+				builder.append(" duracion = :duracion and ");
+			}
+			if (StringUtils.isNotEmpty(oferta.getJornada())) {
+				builder.append(" jornada = :jornada and ");
+			}
+
+			if (builder.toString().endsWith(" where ")) {
+				builder.replace(builder.lastIndexOf(" where "), builder.toString().length(), "");
+			}
+			if (builder.toString().endsWith(" and ")) {
+				builder.replace(builder.lastIndexOf(" and "), builder.toString().length(), "");
 			}
 
 			String queryString = builder.toString();
 			Query query = getEntityManager().createQuery(queryString);
-			if (oferta.getDuracion() != null) {
-				query.setParameter(1, oferta.getDuracion());
+			if (StringUtils.isNotEmpty(oferta.getDuracion())) {
+				query.setParameter("duracion", oferta.getDuracion());
+			}
+			if (StringUtils.isNotEmpty(oferta.getJornada())) {
+				query.setParameter("jornada", oferta.getJornada());
 			}
 			return query.getResultList();
 		} catch (RuntimeException e) {
