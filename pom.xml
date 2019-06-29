@@ -40,11 +40,6 @@
             <artifactId>struts2-jquery-plugin</artifactId>
             <version>4.0.3</version>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>org.apache.struts</groupId>-->
-        <!--<artifactId>struts2-dojo-plugin</artifactId>-->
-        <!--<version>2.3.35</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-spring-plugin</artifactId>
@@ -112,42 +107,12 @@
             <version>2.1.2</version>
         </dependency>
 
-        <!--<dependency>-->
-        <!--<groupId>com.gruuf</groupId>-->
-        <!--<artifactId>struts2-gae-plugin</artifactId>-->
-        <!--<version>1.2</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>opensymphony</groupId>-->
-        <!--<artifactId>xwork</artifactId>-->
-        <!--<version>2.0.3</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.apache.struts</groupId>-->
-        <!--<artifactId>struts-taglib</artifactId>-->
-        <!--<version>1.3.10</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.apache.struts</groupId>-->
-        <!--<artifactId>struts2-dojo-plugin</artifactId>-->
-        <!--<version>2.3.35</version>-->
-        <!--</dependency>-->
     </dependencies>
 
     <build>
         <!-- for hot reload of the web application-->
         <!--<outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>-->
         <plugins>
-<!--            <plugin>-->
-<!--                <groupId>com.google.cloud.tools</groupId>-->
-<!--                <artifactId>appengine-maven-plugin</artifactId>-->
-<!--                <version>1.3.2</version>-->
-<!--                <configuration>-->
-<!--                    <project>totalhrmanagement</project>-->
-<!--                    <version>1</version>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>com.google.appengine</groupId>
                 <artifactId>gcloud-maven-plugin</artifactId>
@@ -162,9 +127,7 @@
                 <version>3.1.3</version>
                 <configuration>
                     <api>JPA</api>
-                    <!--<props>${basedir}/datanucleus.properties</props>-->
                     <verbose>true</verbose>
-                    <!--<enhancerName>ASM</enhancerName>-->
                 </configuration>
                 <executions>
                     <execution>
@@ -174,99 +137,7 @@
                         </goals>
                     </execution>
                 </executions>
-                <!--<dependencies>-->
-                    <!--<dependency>-->
-                        <!--<groupId>org.datanucleus</groupId>-->
-                        <!--<artifactId>datanucleus-api-jpa</artifactId>-->
-                        <!--<version>3.1.3</version>-->
-                    <!--</dependency>-->
-                <!--</dependencies>-->
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.codehaus.mojo</groupId>-->
-                <!--<artifactId>versions-maven-plugin</artifactId>-->
-                <!--<version>2.3</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<phase>compile</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>display-dependency-updates</goal>-->
-                            <!--<goal>display-plugin-updates</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-                <!--<configuration>-->
-                    <!--<excludes>-->
-                        <!--<exclude>javax.servlet:javax.servlet-api</exclude>-->
-                        <!--<exclude>com.google.guava:guava</exclude> &lt;!&ndash; avoid android version &ndash;&gt;-->
-                    <!--</excludes>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
-
-            <!--<plugin>-->
-                <!--<artifactId>maven-war-plugin</artifactId>-->
-                <!--<version>3.1.0</version>-->
-            <!--</plugin>-->
-
-            <!--<plugin>-->
-                <!--<artifactId>maven-compiler-plugin</artifactId>-->
-                <!--<version>3.6.1</version>-->
-            <!--</plugin>-->
-
-            <!--<plugin>-->
-                <!--<artifactId>maven-clean-plugin</artifactId>-->
-                <!--<version>3.0.0</version>-->
-            <!--</plugin>-->
-            <!--<plugin>-->
-                <!--<artifactId>maven-install-plugin</artifactId>-->
-                <!--<version>2.5.2</version>-->
-            <!--</plugin>-->
-
-            <!--<plugin>-->
-                <!--<artifactId>maven-surefire-plugin</artifactId>-->
-                <!--<version>2.20</version>-->
-            <!--</plugin>-->
-
-            <!--<plugin>-->
-                <!--<artifactId>maven-site-plugin</artifactId>-->
-                <!--<version>3.6</version>-->
-            <!--</plugin>-->
-
-            <!--<plugin>-->
-                <!--<artifactId>maven-resources-plugin</artifactId>-->
-                <!--<version>3.0.2</version>-->
-            <!--</plugin>-->
-
-            <!--<plugin>-->
-                <!--<artifactId>maven-deploy-plugin</artifactId>-->
-                <!--<version>3.1</version>-->
-            <!--</plugin>-->
-
-            <!--<plugin>-->
-                <!--<artifactId>maven-enforcer-plugin</artifactId>-->
-                <!--<version>1.4.1</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>enforce-maven</id>-->
-                        <!--<goals>-->
-                            <!--<goal>enforce</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<rules>-->
-                                <!--<requireMavenVersion>-->
-                                    <!--<version>3.5</version>-->
-                                <!--</requireMavenVersion>-->
-                                <!--<requirePluginVersions>-->
-                                    <!--<message>Best Practice is to always define plugin versions!</message>-->
-                                    <!--<banLatest>true</banLatest>-->
-                                    <!--<banRelease>true</banRelease>-->
-                                    <!--<phases>clean,deploy,verify,appengine:run,appengine:deploy,appengine:update,appengine:devappaserver,site</phases>-->
-                                <!--</requirePluginVersions>-->
-                            <!--</rules>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
         </plugins>
     </build>
 
