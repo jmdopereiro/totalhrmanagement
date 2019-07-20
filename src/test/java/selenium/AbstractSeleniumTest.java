@@ -13,31 +13,43 @@ import static org.junit.Assert.fail;
 public class AbstractSeleniumTest {
 
     protected WebDriver driver;
-    String baseUrl;
+    protected String baseUrl;
     protected boolean acceptNextAlert = true;
     protected StringBuffer verificationErrors = new StringBuffer();
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         driver = new FirefoxDriver();
-        baseUrl = "http://localhost:8080/";
+        baseUrl = "http://localhost:8080/";//https://totalhrmanagement.appspot.com/
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.get("http://localhost:8080");
+        driver.get(baseUrl);
     }
 
-    protected void login() {
+    protected void loginCandidate() {
+        login("12345678Z", "juan@hotmail.com", "juan");
+    }
+
+    protected void loginResponsable(String dni, String email, String password) {
+        login(dni, email, password);
+    }
+
+    private void login(String dni, String email, String password) {
         driver.get(baseUrl);
         driver.findElement(By.id("loginForm_dni")).clear();
-        driver.findElement(By.id("loginForm_dni")).sendKeys("12345678Z");
+        driver.findElement(By.id("loginForm_dni")).sendKeys(dni);
         driver.findElement(By.id("loginForm_email")).clear();
-        driver.findElement(By.id("loginForm_email")).sendKeys("josemanuel.dopereiro@mail.com");
+        driver.findElement(By.id("loginForm_email")).sendKeys(email);
         driver.findElement(By.id("loginForm_password")).clear();
-        driver.findElement(By.id("loginForm_password")).sendKeys("jose");
+        driver.findElement(By.id("loginForm_password")).sendKeys(password);
         driver.findElement(By.id("loginForm_0")).click();
     }
 
+    protected void logout() {
+        driver.findElement(By.linkText("Logout")).click();
+    }
+
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {

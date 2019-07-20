@@ -21,8 +21,10 @@ Joses-MacBook-Air:totalhrmanagement josemanueldopereiro$ mkdir target/totalhrman
 Joses-MacBook-Air:totalhrmanagement josemanueldopereiro$ cp /Users/josemanueldopereiro/local_db.bin target/totalhrmanagement-1.0-SNAPSHOT/WEB-INF/appengine-generated/.
 
 
-Starting the build server:
+Starting the Team City build server:
 /Applications/TeamCity/bin/startup.sh run
 
-Starting the build agent:
+Starting the Team City build agent:
 /Applications/buildAgent/bin/agent.sh start
+
+grep token /Applications/TeamCity/catalina.out

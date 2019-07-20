@@ -1,4 +1,4 @@
-package selenium.user;
+package selenium.candidate;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -8,7 +8,7 @@ public class Delete extends AbstractSeleniumTest {
 
     @Test
     public void testDelete() {
-        login();
+        loginResponsable("A58818501", "robert.atkins@mail.com", "robert");
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='My inscriptions'])[1]/following::b[1]")).click();
         driver.findElement(By.id("botonEliminarPerfil")).click();
         driver.findElement(By.id("eliminarPerfil_palabraClave")).click();

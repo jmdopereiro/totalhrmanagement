@@ -1,41 +1,24 @@
 package selenium;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
 
 public class Login extends AbstractSeleniumTest {
 
-    private WebDriver driver;
-    private String baseUrl;
-    private boolean acceptNextAlert = true;
-    private StringBuffer verificationErrors = new StringBuffer();
-
-    @Before
-    public void setUp() throws Exception {
-        driver = new FirefoxDriver();
-        baseUrl = "http://localhost:8080";
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    @Test
+    public void testLogin() {
+        loginResponsable("A58818501", "robert.atkins@mail.com", "robert");
     }
 
     @Test
-    public void testLogin() {
-        login();
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
-        String verificationErrorString = verificationErrors.toString();
-        if (!"".equals(verificationErrorString)) {
-            fail(verificationErrorString);
+    public void testLogout() throws Exception {
+        logout();
+        try {
+            assertEquals("About Total HR Management", driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Privacy policy'])[1]/following::h3[1]")).getText());
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
         }
     }
 
