@@ -14,12 +14,17 @@ This application allows you to register your company, add your responsible and y
 
 Also candidates can register and subscribe to those job offers.
 
-To keep the datastore:
+In your local environment the file local_db.bin represents the datastore, and is located under the WEB-INF appengine-generated directory.
 
-Joses-MacBook-Air:totalhrmanagement josemanueldopereiro$ mkdir target/totalhrmanagement-1.0-SNAPSHOT/WEB-INF/appengine-generated
+Your could generate the directory:
 
-Joses-MacBook-Air:totalhrmanagement josemanueldopereiro$ cp /Users/josemanueldopereiro/local_db.bin target/totalhrmanagement-1.0-SNAPSHOT/WEB-INF/appengine-generated/.
+mkdir target/totalhrmanagement-1.0-SNAPSHOT/WEB-INF/appengine-generated
 
+And copy a back up of the datastore:
+
+cp local_db.bin target/totalhrmanagement-1.0-SNAPSHOT/WEB-INF/appengine-generated/.
+
+If you have a local installation of the CI/CD Teamcity server this is the way you start the server and the agent
 
 Starting the Team City build server:
 /Applications/TeamCity/bin/startup.sh run
