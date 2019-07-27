@@ -16,7 +16,7 @@ Also candidates can register and subscribe to those job offers.
 
 In your local environment the file local_db.bin represents the datastore, and is located under the WEB-INF appengine-generated directory.
 
-Your could generate the directory:
+You can generate the directory:
 
 mkdir target/totalhrmanagement-1.0-SNAPSHOT/WEB-INF/appengine-generated
 
