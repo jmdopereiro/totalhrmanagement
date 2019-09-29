@@ -1,7 +1,7 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class Selenium2Exapmple {
+public class Selenium2Example {
 
 
     public static void main(String args[]) {

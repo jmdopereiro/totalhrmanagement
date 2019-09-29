@@ -12,7 +12,11 @@ public class Create extends AbstractSeleniumTest {
 //        createOffer("Technical Consultant", "24/05/2019", "24/11/2019", "descripcion", "Indefinida", "Completa", "Madrid", "20000", "30000", "bonus", "2", "3", "20", "30", "otros datos");
 //        logout();
         loginResponsable("03914762", "adowns@redsapsolutions.com", "albert");
-        createOffer("JAVA Developer Consultant", "01/01/2019", "31/12/2019", "descripcion", "Temporal", "Parcial", "Barcelona", "19000", "35000", "paga extra", "1", "3", "18", "", "");
+
+        for (int i = 0; i < 10; i++) {
+            createOffer("JAVA Developer Consultant"+i, "01/01/2019", "31/12/2019", "descripcion", "Temporal", "Parcial", "Barcelona", "19000", "35000", "paga extra", "1", "3", "18", "", "");
+        }
+
         logout();
     }
 

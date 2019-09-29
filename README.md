@@ -7,7 +7,6 @@ How to run the application:
 
 mvn appengine:run
 
-
 Manage your HR Resources
 
 This application allows you to register your company, add your responsible and your job offers.

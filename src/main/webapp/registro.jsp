@@ -14,6 +14,8 @@
 	<script language="javascript" src="${pageContext.request.contextPath}/struts/utils.js" type="text/javascript"></script>
 	<script language="javascript" src="${pageContext.request.contextPath}/struts/xhtml/validation.js" type="text/javascript"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/prototype.js"></script>
+	<script src="javascript/jquery.validate.js"></script>
+	<script src="javascript/jquery.form.js"></script>
 	<script language="javascript">
 	$(document).ready(function()
 	{
@@ -77,6 +79,18 @@
 			}
 
 		});
+
+		$('#formCandidato').validate({
+			rules : {
+				email : {
+					equalTo : "#candidato_email"
+				},
+				pass : {
+					equalTo : "#candidato_password"
+				}
+			}
+		});
+
 	});
 	</script>
 </head>
@@ -190,10 +204,10 @@
 										<s:textfield label="%{getText('registro.datosPersonales.dni')}" name="candidato.dni" required="true"/>
 										<s:textfield label="%{getText('registro.datosPersonales.nombre')}" name="candidato.nombre" required="true"/>
 										<s:textfield label="%{getText('registro.datosPersonales.apellidos')}" name="candidato.apellidos" required="true"/>
-										<s:textfield label="%{getText('registro.datosPersonales.email')}" name="candidato.email" required="true"/>
-										<s:textfield label="%{getText('registro.datosPersonales.repetirEmail')}" name="email" required="true"/>
-										<s:password label="%{getText('registro.datosPersonales.password')}" name="pass" required="true"/>
-										<s:password label="%{getText('registro.datosPersonales.repetirPassword')}" name="candidato.password" required="true"/>
+										<s:textfield label="%{getText('registro.datosPersonales.email')}" name="candidato.email" id="candidato_email" required="true"/>
+										<s:textfield label="%{getText('registro.datosPersonales.repetirEmail')}" name="email" id="email" required="true" />
+										<s:password label="%{getText('registro.datosPersonales.password')}" name="candidato.password" id="candidato_password" required="true"/>
+										<s:password label="%{getText('registro.datosPersonales.repetirPassword')}" name="pass" id="pass" required="true" />
 										<sj:datepicker name="candidato.fechaNacimiento" label="%{getText('registro.datosPersonales.fechaNacimiento')}" yearRange="1900:today" changeMonth="true" changeYear="true" showButtonPanel="true"/>
 										<sj:radio label="%{getText('registro.datosPersonales.genero')}" list="{'Masculino','Femenino'}" name="candidato.genero"/>
 										<s:textfield label="%{getText('registro.datosPersonales.direccion')}" name="candidato.direccion"/>

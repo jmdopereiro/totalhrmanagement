@@ -36,4 +36,10 @@ public class Create extends AbstractSeleniumTest {
         driver.findElement(By.linkText("Logout")).click();
     }
 
+    @Test
+    public void testConfirmEmail() {
+        driver.findElement(By.cssSelector("img[alt=\"Registrate ahora\"]")).click();
+        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Select an option'])[1]/following::label[1]")).click();
+    }
+
 }
