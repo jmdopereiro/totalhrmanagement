@@ -91,6 +91,17 @@
 			}
 		});
 
+		$('#formResponsable').validate({
+			rules : {
+				email : {
+					equalTo : "#responsable_email"
+				},
+				pass : {
+					equalTo : "#responsable_password"
+				}
+			}
+		})
+
 	});
 	</script>
 </head>
@@ -237,10 +248,10 @@
 										<s:textfield label="%{getText('registro.datosPersonales.fijo')}" name="responsable.fijo"/>
 										<s:textfield label="%{getText('registro.datosPersonales.movil')}" name="responsable.movil"/>
 										<s:textfield label="%{getText('registro.datosPersonales.fax')}" name="responsable.fax"/>
-										<s:textfield label="%{getText('registro.datosPersonales.email')}" name="email" required="true"/>
-										<s:textfield label="%{getText('registro.datosPersonales.repetirEmail')}" name="responsable.email" required="true"/>
-										<s:password label="%{getText('registro.datosPersonales.password')}" name="pass" required="true"/>
-										<s:password label="%{getText('registro.datosPersonales.repetirPassword')}" name="responsable.password" required="true"/>
+										<s:textfield label="%{getText('registro.datosPersonales.email')}" name="email" id="email" required="true"/>
+										<s:textfield label="%{getText('registro.datosPersonales.repetirEmail')}" name="responsable.email" id="responsable_email" required="true"/>
+										<s:password label="%{getText('registro.datosPersonales.password')}" name="pass" id="pass" required="true"/>
+										<s:password label="%{getText('registro.datosPersonales.repetirPassword')}" name="responsable.password" id="responsable_password" required="true"/>
 										<s:submit id="registrarResp" value="Registrarme" cssClass="ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left ui-state-hover"/>
 									</s:form>
 								</sj:div>

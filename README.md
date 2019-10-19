@@ -23,6 +23,11 @@ And copy a back up of the datastore:
 
 cp local_db.bin target/totalhrmanagement-1.0-SNAPSHOT/WEB-INF/appengine-generated/.
 
+
+Hot to deploy in gcloud: 
+mvn gcloud:deploy
+
+
 If you have a local installation of the CI/CD Teamcity server this is the way you start the server and the agent
 
 Starting the Team City build server:
