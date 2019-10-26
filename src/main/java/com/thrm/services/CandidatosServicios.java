@@ -1,5 +1,6 @@
 package com.thrm.services;
 
+import java.io.File;
 import java.util.List;
 
 import com.google.appengine.api.datastore.Key;
@@ -154,9 +155,11 @@ public class CandidatosServicios {
         return resultado;
     }
 
-    public String guardarFoto(Candidato candidato, String contenidoFoto) {
+    public String guardarFoto(Candidato candidato, File foto) {
         String resultado = "ERROR";
-        candidato.setFoto(getServiciosGlobales().stringToBlob(contenidoFoto));
+//        candidato.setFoto(getServiciosGlobales().stringToBlob(contenidoFoto));
+        candidato.setFoto(getServiciosGlobales().fileToBlob(foto));
+
         candidatoDAO.merge(candidato);
         resultado = "SUCCESS";
         return resultado;

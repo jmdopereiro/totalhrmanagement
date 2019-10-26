@@ -48,7 +48,7 @@
 							<s:text name="inicio.mensajeRegistro"/><br /><br /><br />
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<s:url var="urlRegistro" action="mostrarRegistro"/>
-							<a href="<s:property value="#urlRegistro"/>"><img src="images/registro.gif" alt="Registrate ahora" width="100" height="100"></a>
+							<a href="<s:property value="#urlRegistro"/>"><img src="images/register-now.jpg" alt="Register Now" width="100" height="100"></a>
 					</div>
 					<div class="bd3_bot">
 						<div class="bd3_bot_content">&nbsp;</div>

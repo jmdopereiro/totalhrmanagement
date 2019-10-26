@@ -9,8 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.*;
 
 public class ServiciosGlobales {
@@ -164,7 +163,7 @@ public class ServiciosGlobales {
 
     public Blob stringToBlob(String file) {
 
-        InputStream inputStream = null;
+        InputStream inputStream;
         byte[] bytes = new byte[524288];
         Blob blob = null;
 
@@ -176,6 +175,22 @@ public class ServiciosGlobales {
             log.error("Streaming failed", e);
         }
         return blob;
+    }
+
+    public Blob fileToBlob(File file) {
+
+        byte[] bytes = new byte[524288];
+        Blob blob;
+
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            fileInputStream.read(bytes);
+            blob = new Blob(bytes);
+            return blob;
+        } catch (IOException e) {
+            log.error("File read failed");
+        }
+        return null;
     }
 
 //	public String eliminarFormacionCandidato(int identificador) {

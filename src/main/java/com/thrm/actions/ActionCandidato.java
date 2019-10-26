@@ -1,13 +1,8 @@
 package com.thrm.actions;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.SQLException;
+import java.io.*;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,6 +12,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
 import com.thrm.util.ContextProvider;
+import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
 import com.google.appengine.api.datastore.Key;
@@ -56,7 +52,7 @@ public class ActionCandidato extends ActionSupport {
 	private ServiciosGlobales serviciosGlobales;
 	private CandidatosServicios candidatosServicios;
 
-	private String fichero = null;
+	private File fichero = null;
 	private String ficheroContentType = null;
 	private String ficheroFileName = null;
 
@@ -143,6 +139,8 @@ public class ActionCandidato extends ActionSupport {
 		String resultado = "ERROR";
 		if (fichero != null) {
 			candidato = getServiciosGlobales().cargarCandidato();
+			candidato.setFotoContentType(ficheroContentType);
+			candidato.setFotoFileName(ficheroFileName);
 			resultado = candidatosServicios.guardarFoto(candidato, fichero);
 		}
 		mensaje = "subirFotoExito";
@@ -167,6 +165,9 @@ public class ActionCandidato extends ActionSupport {
 			InputStream inputStream = new ByteArrayInputStream(candidato.getFoto().getBytes());
 			BufferedInputStream iis;
 			iis = new BufferedInputStream(inputStream);
+
+
+
 //			BufferedImage image = ImageIO.read(iis);
 //			ImageIO.write(image, "JPG", sos);
 
@@ -194,7 +195,7 @@ public class ActionCandidato extends ActionSupport {
 		String resultado = "ERROR";
 		if (fichero != null) {
 			candidato = getServiciosGlobales().cargarCandidato();
-			resultado = getServiciosGlobales().guardarCurriculum(fichero, candidato, idiomaCurriculum, ficheroFileName, ficheroContentType);
+//			resultado = getServiciosGlobales().guardarCurriculum(fichero, candidato, idiomaCurriculum, ficheroFileName, ficheroContentType);
 		}
 		mensaje = "subirCurriculumExito";
 		if (resultado.equals("ERROR")) {
@@ -222,16 +223,23 @@ public class ActionCandidato extends ActionSupport {
 		}
 		return resultado;
 	}
-//	/*
-//	 * public String guardar(File fichero, String ruta) { String
-//	 * resultado="ERROR"; try { String rutaFichero = "/fotos/" + ruta; File
-//	 * lugarCopia = new File(rutaFichero);
-//	 * System.out.println(lugarCopia.getAbsolutePath());
-//	 * FileUtils.copyFile(fichero, lugarCopia); resultado="SUCCESS"; } catch
-//	 * (Exception e) { System.out.println("LOLA");
-//	 * addActionError(e.getMessage()); resultado="INPUT"; } return resultado; }
-//	 */
-//
+
+	public String guardar(File fichero, String ruta) {
+		String	resultado = "ERROR";
+		try {
+			String rutaFichero = "/fotos/" + ruta;
+			File lugarCopia = new File(rutaFichero);
+			System.out.println(lugarCopia.getAbsolutePath());
+			FileUtils.copyFile(fichero, lugarCopia);
+			resultado = "SUCCESS";
+		} catch	(Exception e) {
+			System.out.println("LOLA");
+			addActionError(e.getMessage());
+			resultado = "INPUT";
+		}
+		return resultado;
+	}
+
 
 	@Override
 	public void validate() {
@@ -297,7 +305,7 @@ public class ActionCandidato extends ActionSupport {
 	public String modificarDatosPersonalesCandidato() {
 		
 		if(fichero!=null)
-			candidato.setFoto(getServiciosGlobales().stringToBlob(fichero));
+			candidato.setFoto(getServiciosGlobales().fileToBlob(fichero));
 
 		return getCandidatosServicios().modificarDatosPersonales(candidato);
 	}
@@ -310,7 +318,7 @@ public class ActionCandidato extends ActionSupport {
 		
 		formacion.setExpedienteContentType(ficheroContentType);
 		formacion.setExpedienteFileName(ficheroFileName);
-		resultado = getServiciosGlobales().crearFormacionCandidato(formacion, fichero, candidato, "");
+//		resultado = getServiciosGlobales().crearFormacionCandidato(formacion, fichero, candidato, "");
 
 		return resultado;
 	}
@@ -550,11 +558,11 @@ public class ActionCandidato extends ActionSupport {
 	/*
 	 * public void setRuta(String ruta) { this.ruta=ruta; }
 	 */
-	public String getFichero() {
+	public File getFichero() {
 		return fichero;
 	}
 
-	public void setFichero(String fichero) {
+	public void setFichero(File fichero) {
 		this.fichero = fichero;
 	}
 

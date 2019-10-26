@@ -54,7 +54,7 @@
             console.log("variable: " + variable);
 			$('#capaSeleccion').hide();
 			$('#indicaciones').show('slow');
-			if (variable=='Candidato')
+			if (variable=='Candidate')
 			{
 				$('#candidato').show('slow');
 				$('#indicacionesCandidato').show('slow');
@@ -62,7 +62,7 @@
 				$('#indicacionesResponsable').hide();
 
 			}
-			if (variable=='Responsable de RR.HH.')
+			if (variable=='HR Manager')
 			{
 				$('#responsable').show('slow');
 				$('#indicacionesResponsable').show('slow');
@@ -70,7 +70,7 @@
 				$('#indicacionesCandidato').hide();
 
 			}
-			if (variable=='Empresa')
+			if (variable=='Company')
 			{
 				$('#empresa').show('slow');
 				$('#indicacionesResponsable').hide();
@@ -113,8 +113,7 @@
 		<div id="logo"><span>logo text hidden</span></div>
 		<div id="primary_menu">
 			<div id="pm_main">
-				<s:url action="mostrarAyuda"/>
-				<s:url value="index.jsp"/>
+				<s:url var="urlAyuda" action="mostrarAyuda"/>
 			</div>
 			<div id="pm_sub">
 				<ul>
@@ -129,7 +128,6 @@
 	<!-- content block START -->
 	<div id="conent">
 		<div class="right_col">
-				<!-- AQUÍ IRIA LO DE LA DERECHA-->
 				<sj:div id="indicaciones" indicator="indicadorEspera" cssStyle="display:none;font:9pt verdana;">
 					<div class="db3" style="" >
 						<div class="bd3_top">
@@ -139,45 +137,45 @@
 							<h3><s:text name="global.indicaciones"/></h3>
 							</br></br>
 							<sj:div id="indicacionesCandidato" indicator="indicadorEspera" bindOn="roles" cssStyle="display:none">
-								<u><i>Ejemplo:</i></u><br/>
+								<u><i>Example:</i></u><br/>
 
-								<br/><strong>DNI:</strong> 123456789A
-								<br/><strong>Nombre:</strong> Juan
-								<br/><strong>Apellidos:</strong> García Sancho
-								<br/><strong>Email:</strong> juan@gmail.com
-								<br/><strong>Confirmar email:</strong> juan@gmail.com
-								<br/><strong>Contraseña:</strong> 12AB56CD
-								<br/><strong>Confirmar Contraseña:</strong> 12AB56CD
-								<br/><strong>Fecha de nacimiento:</strong> 05/04/82
-								<br/><strong>Dirección:</strong> C/Camino Real nº5 Centro Madrid CP:28001
-								<br/><strong>Teléfono fijo:</strong> 912345678
-								<br/><strong>Teléfono móvil:</strong> 612345678
+								<br/><strong>ID:</strong> 123456789A
+								<br/><strong>Name:</strong> John
+								<br/><strong>Last Name:</strong> Doe
+								<br/><strong>Email:</strong> john@gmail.com
+								<br/><strong>Confirm email:</strong> john@gmail.com
+								<br/><strong>Password:</strong> 12AB56CD
+								<br/><strong>Confirm Password:</strong> 12AB56CD
+								<br/><strong>Date of birth:</strong> 05/04/82
+								<br/><strong>Address:</strong>
+								<br/><strong>Phone number:</strong> 912345678
+								<br/><strong>Movil number:</strong> 612345678
 								<br/><strong>Fax:</strong> 913456789
-								<br/><strong>Nacionalidad:</strong> Española
-								<br/><strong>Estado civil:</strong> Casado
-								<br/><strong>Carnet de conducir:</strong> Sí
-								<br/><strong>Vehículo propio:</strong> Sí
-								<br/><strong>Trabaja actualmente:</strong> No
-								<br/><strong>Movilidad geogrífica:</strong> Internacional
-								<br/><strong>Otros datos de interés:</strong> Soy una persona trabajadora y comprometida con mi trabajo.
+								<br/><strong>Nationality:</strong>
+								<br/><strong>Marital status:</strong> Married
+								<br/><strong>Driver License:</strong> Yes
+								<br/><strong>Own Vehicle:</strong> Yes
+								<br/><strong>Currently employed:</strong> No
+								<br/><strong>Willingness to travel:</strong> International
+								<br/><strong>Aditional interests:</strong> I'm a truly worker and compromissed with my job.
 								<br/><br/><i>Nota:<s:text name="global.mensaje.formatoFoto"/></i>
 							</sj:div>
 							<sj:div id="indicacionesResponsable" indicator="indicadorEspera" bindOn="roles" cssStyle="display:none">
-								 	<u><i>Ejemplo:</i></u><br/>
+								 	<u><i>Example:</i></u><br/>
 
-								 	<br/><strong>CIF:</strong> 0000000G
-								 	<br/><strong>Palabra clave:</strong> 1582ABC234 <i>(Esta palabra se la suministrará el sistema en el registro de la empresa)</i>
-								 	<br/><strong>DNI:</strong> 123456789A
-								 	<br/><strong>Nombre:</strong> Juan
-									<br/><strong>Apellidos:</strong> García Sancho
-									<br/><strong>Teléfono fijo:</strong> 912345678
-									<br/><strong>Teléfono móvil:</strong> 612345678
+								 	<br/><strong>VAT Number:</strong> 0000000G
+								 	<br/><strong>Key word:</strong> 1582ABC234 <i>(Esta palabra se la suministrará el sistema en el registro de la empresa)</i>
+								 	<br/><strong>ID:</strong> 123456789A
+								 	<br/><strong>Name:</strong> Juan
+									<br/><strong>Last name:</strong> García Sancho
+									<br/><strong>Telephone number:</strong> 912345678
+									<br/><strong>Movil number:</strong> 612345678
 									<br/><strong>Fax:</strong> 913456789
 									<br/><strong>Email:</strong> juan@gmail.com
-									<br/><strong>Confirmar email:</strong> juan@gmail.com
-									<br/><strong>Contraseña:</strong> 12AB56CD
-									<br/><strong>Confirmar Contraseña:</strong> 12AB56CD
-								 	<br/><br/><strong>Si su empresa aún no ha sido registrada contactenos, para solicitar su inscripción.</strong><br/>
+									<br/><strong>Confirm email:</strong> juan@gmail.com
+									<br/><strong>Password</strong> 12AB56CD
+									<br/><strong>Confirm Password:</strong> 12AB56CD
+								 	<br/><br/><strong>Register now</strong><br/>
 							</sj:div>
 
 						</div>
@@ -201,7 +199,7 @@
 								<sj:div id="capaSeleccion" indicator="indicadorEspera" bindOn="roles">
 									<br/><br/><br/><br/>
 									<s:label value="%{getText('registro.seleccionarOpcion')}"/><br/><br/><br/>
-									<sj:radio id="roles" list="{'Candidato','Responsable de RR.HH.','Empresa'}" name="primerPaso"/>
+									<sj:radio id="roles" list="{'Candidate','HR Manager','Company'}" name="primerPaso"/>
            						</sj:div>
            							<br/><br/><br/>
 

@@ -176,7 +176,7 @@ $(document).ready(function()
 							<s:url var="urlFotito" action="mostrarFoto"/>
 						  
 						  <s:url var="urlFoto" action="mostrarFoto">
-						  	<s:param name="id" value="#candidato.key.id"/>
+						  	<s:param name="id" value="#request.candidato.key.id"/>
 					  	  </s:url>
 						<img src="<s:property value="#urlFoto"/>" width="350" />
 

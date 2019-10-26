@@ -32,6 +32,10 @@ public class Candidato implements java.io.Serializable {
     private Integer fax;
     private String email;
     private Blob foto;
+    private String fotoFileName;
+    private String fotoContentType;
+
+
     private String password;
     private Integer annosExperiencia;
     private String genero;
@@ -349,4 +353,19 @@ public class Candidato implements java.io.Serializable {
         return key;
     }
 
+    public String getFotoFileName() {
+        return fotoFileName;
+    }
+
+    public void setFotoFileName(String fotoFileName) {
+        this.fotoFileName = fotoFileName;
+    }
+
+    public String getFotoContentType() {
+        return fotoContentType;
+    }
+
+    public void setFotoContentType(String fotoContentType) {
+        this.fotoContentType = fotoContentType;
+    }
 }
