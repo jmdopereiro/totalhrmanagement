@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.thrm.util.ContextProvider;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.ServletActionContext;
 
 import com.google.appengine.api.datastore.Key;
@@ -33,6 +35,8 @@ import com.thrm.domain.Oferta;
 import com.thrm.services.*;
 
 public class ActionCandidato extends ActionSupport {
+
+	private static final Log log = LogFactory.getLog(ActionCandidato.class);
 
 	private List<Candidato> candidatos = null;
 	private Candidato candidato = null;
@@ -136,13 +140,17 @@ public class ActionCandidato extends ActionSupport {
 	}
 
 	public String subirFoto() {
+
 		String resultado = "ERROR";
 		if (fichero != null) {
+			log.info("Uploading file: " + fichero.getName());
 			candidato = getServiciosGlobales().cargarCandidato();
 			candidato.setFotoContentType(ficheroContentType);
 			candidato.setFotoFileName(ficheroFileName);
 			resultado = candidatosServicios.guardarFoto(candidato, fichero);
-		}
+		} else
+			log.error("Unable to upload file");
+
 		mensaje = "subirFotoExito";
 		if (resultado.equals("ERROR")) {
 			mensaje = "subirFotoError";
