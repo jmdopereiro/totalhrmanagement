@@ -1,6 +1,5 @@
 package com.thrm.services;
 
-import java.io.File;
 import java.util.List;
 
 import com.google.appengine.api.datastore.Key;
@@ -8,10 +7,10 @@ import com.google.appengine.api.datastore.KeyFactory;
 import com.thrm.dao.CandidatosDAO;
 import com.thrm.dao.ConocimientoEnCandidatoDAO;
 import com.thrm.dao.InscripcionDAO;
-import com.thrm.dao.datastore.DSCandidateDAO;
 import com.thrm.domain.Candidato;
 import com.thrm.domain.ConocimientoEnCandidato;
 import com.thrm.domain.Inscripcion;
+import org.apache.struts2.dispatcher.multipart.UploadedFile;
 
 public class CandidatosServicios {
 
@@ -155,10 +154,9 @@ public class CandidatosServicios {
         return resultado;
     }
 
-    public String guardarFoto(Candidato candidato, File foto) {
+    public String guardarFoto(Candidato candidato, UploadedFile file) {
         String resultado = "ERROR";
-//        candidato.setFoto(getServiciosGlobales().stringToBlob(contenidoFoto));
-        candidato.setFoto(getServiciosGlobales().fileToBlob(foto));
+        candidato.setFoto(getServiciosGlobales().uploadedFileToBlob(file));
 
         candidatoDAO.merge(candidato);
         resultado = "SUCCESS";

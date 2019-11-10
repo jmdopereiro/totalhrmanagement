@@ -25,7 +25,7 @@
 	</action>
 	<action name="mostrarFoto" class="com.thrm.actions.ActionCandidato" method="mostrarFoto">
 		<interceptor-ref name="basicStack"/>
-		<result name="SUCCESS">perfilCandidato.jsp</result>
+		<result name="success" type="stream"/>
 		<result name="ERROR">error.jsp</result>
 	</action>
 	<action name="registrarCandidato" class="com.thrm.actions.ActionCandidato" method="registrarCandidato">

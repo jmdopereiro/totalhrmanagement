@@ -7,8 +7,8 @@
 	<package name="default" extends="struts-default">
 		<interceptors>
 
-			<interceptor name="auth" class="com.thrm.util.AuthenticatorInterceptor"></interceptor>
-			<interceptor name="gaeFileUploadInterceptor" class="com.struts2.gae.interceptor.GaeFileUploadInterceptor"></interceptor>
+			<interceptor name="auth" class="com.thrm.util.AuthenticatorInterceptor"/>
+			<interceptor name="gaeFileUploadInterceptor" class="com.struts2.gae.interceptor.GaeFileUploadInterceptor"/>
 
             <!-- Basic stack -->
             <interceptor-stack name="basicStack">
@@ -52,8 +52,8 @@
    				</interceptor-ref>
 			</interceptor-stack>
 			<interceptor-stack name="fileUploadStack">
-				<interceptor-ref name="gaeFileUploadInterceptor"></interceptor-ref>
-				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="gaeFileUploadInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
 			</interceptor-stack>
 		</interceptors>
 		<action name="">

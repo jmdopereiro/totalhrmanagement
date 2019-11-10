@@ -169,7 +169,7 @@ $(document).ready(function()
 									<s:file label="Fichero" name="fichero" required="true" requiredposition="left"/>
 									<s:submit value="Enviar" cssClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover"/>
 								</s:form>
-							</sj:div> 
+							</sj:div>
 						</s:if>
 						<s:else>
 							<s:set var="urlFoto" value="request.candidato.foto"/>

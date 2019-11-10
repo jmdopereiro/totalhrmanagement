@@ -6,28 +6,23 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    <filter>
-        <!--<filter-name>struts2-gae</filter-name>-->
-        <!--<filter-class>com.gruuf.struts2.gae.dispatcher.GaePrepareAndExecuteFilter</filter-class>-->
-        <filter-name>struts2</filter-name>
-        <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
-    </filter>
+
     <filter-mapping>
-        <!--<filter-name>struts2-gae</filter-name>-->
-        <filter-name>struts2</filter-name>
+        <filter-name>struts2-gae</filter-name>
         <url-pattern>/</url-pattern>
         <url-pattern>*.action</url-pattern>
         <url-pattern>*.jsp</url-pattern>
         <url-pattern>*.css</url-pattern>
         <url-pattern>*.js</url-pattern>
-        <!--<url-pattern>/*</url-pattern>-->
     </filter-mapping>
-    <!--<servlet>-->
-        <!--<servlet-name>dispatcher</servlet-name>-->
-        <!--<servlet-class>com.gruuf.struts2.gae.dispatcher.GaeDispatcher</servlet-class>-->
-    <!--</servlet>-->
+
+    <filter>
+        <filter-name>struts2-gae</filter-name>
+        <filter-class>com.gruuf.struts2.gae.dispatcher.GaePrepareAndExecuteFilter</filter-class>
+    </filter>
+
     <listener>
-        <listener-class>com.thrm.util.OgnlListener</listener-class>
+        <listener-class>com.gruuf.struts2.gae.dispatcher.GaeInitListener</listener-class>
     </listener>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

@@ -8,11 +8,15 @@ import com.thrm.domain.*;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.struts2.dispatcher.multipart.UploadedFile;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 
 public class ServiciosGlobales {
+
+    private static final Log log = LogFactory.getLog(ServiciosGlobales.class);
 
     private ResponsablesServicios responsablesServicios = null;
     private InscripcionDAO inscripcionDAO;
@@ -39,10 +43,6 @@ public class ServiciosGlobales {
     private ConocimientosServicios conocimientosServicios;
 
     public static final String NIF_STRING_ASOCIATION = "TRWAGMYFPDXBNJZSQVHLCKE";
-
-//	static final Logger log = Logger.getLogger("ServiciosGlobales");
-
-    private static final Log log = LogFactory.getLog(ServiciosGlobales.class);
 
     public String eliminarInscripcionCandidato(Candidato candidato, Oferta oferta) {
         String resultado = "ERROR";
@@ -161,15 +161,16 @@ public class ServiciosGlobales {
         return resultado;
     }
 
-    public Blob stringToBlob(String file) {
+    Blob stringToBlob(String stringFile) {
 
         InputStream inputStream;
         byte[] bytes = new byte[524288];
         Blob blob = null;
 
         try {
-            inputStream = IOUtils.toInputStream(file, "UTF-8");
-            inputStream.read(bytes);
+            inputStream = IOUtils.toInputStream(stringFile, "UTF-8");
+            int bytesRead = inputStream.read(bytes);
+            log.info("Number of bytes read: " + bytesRead);
             blob = new Blob(bytes);
         } catch (IOException e) {
             log.error("Streaming failed", e);
@@ -177,20 +178,13 @@ public class ServiciosGlobales {
         return blob;
     }
 
-    public Blob fileToBlob(File file) {
+    public Blob uploadedFileToBlob(UploadedFile file) {
 
-        byte[] bytes = new byte[524288];
+        byte[] bytes = (byte[]) file.getContent();
         Blob blob;
 
-        try {
-            FileInputStream fileInputStream = new FileInputStream(file);
-            fileInputStream.read(bytes);
-            blob = new Blob(bytes);
-            return blob;
-        } catch (IOException e) {
-            log.error("File read failed");
-        }
-        return null;
+        blob = new Blob(bytes);
+        return blob;
     }
 
 //	public String eliminarFormacionCandidato(int identificador) {
